@@ -33,3 +33,6 @@ As default `realtime_updates` will be set to false.
 ### Mobile
 * [React Native][native] will be used to port Shiparoo onto mobile platforms, making the application more accessible.
 [native]: https://facebook.github.io/react-native/
+
+### User Accounts (Maybe?)
+* Users will be able to sign up/log in to see history of their shipments.
