@@ -25,10 +25,27 @@ As default `realtime_updates` will be set to false.
 [Twilio's SMS API][twilio] will be used to send SMS updates about the shipment to the phone number provided.
 [twilio]: https://www.twilio.com/sms
 
-## Future Implementation (MUST DO)
 ### Google Maps API
-* [Google Maps API][maps] will provide the shipment's history as markers on a map.
+[Google Maps API][maps] will provide the shipment's history as markers on a map.
 [maps]: https://developers.google.com/maps/
+
+## Implementation Timeline
+### Day 1: Setup rails backend to have packages model/controller
+
+### Day 2 & 3: Get familiar with API's
+* Shippo
+* Twilio
+* Google Map
+
+### Day 4: Setup webpage
+* Have clean and bug free navigation throughout page
+
+## Time Left
+* User accounts
+* Clean up UI/UX
+* Port to mobile with react native.
+
+## Future Implementation (MUST DO)
 
 ### Mobile
 * [React Native][native] will be used to port Shiparoo onto mobile platforms, making the application more accessible.
