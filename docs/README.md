@@ -6,26 +6,30 @@ Shiparoo is a web application to make tracking your shipments simple. All you ne
 
 You will also have the option to receive real time SMS updates on your shipment.
 
+## Wireframe
+![home_page: ./images/Shiparoo.png][homepage]
+[homepage]: ./images/Shiparoo.png "Shiparoo home page"
+
 ## Feature and Implementation
 ### Packages
 Packages will be stored in a table containing the package `id`, `tracking_number`, `phone_number`, and option for `realtime_updates`.
 
 As default `realtime_updates` will be set to false.
 
-##Technology
-###Shippo
+## Technology
+### Shippo
 [Shippo's Tracking API][shippo] will be used to provide data about the specific shipment.
 [shippo]: https://goshippo.com/tracking-api/
 
-###Twilio
+### Twilio
 [Twilio's SMS API][twilio] will be used to send SMS updates about the shipment to the phone number provided.
 [twilio]: https://www.twilio.com/sms
 
-##Future Implementation
+## Future Implementation (MUST DO)
 ### Google Maps API
 * [Google Maps API][maps] will provide the shipment's history as markers on a map.
 [maps]: https://developers.google.com/maps/
 
-###Mobile
+### Mobile
 * [React Native][native] will be used to port Shiparoo onto mobile platforms, making the application more accessible.
 [native]: https://facebook.github.io/react-native/
