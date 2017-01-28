@@ -7,7 +7,6 @@ end
 
 ruby '2.3.1'
 
-gem 'shippo'
 gem 'twilio-ruby', '~> 4.11.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
