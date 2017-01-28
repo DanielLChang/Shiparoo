@@ -11,7 +11,7 @@ class TwilioClient
     @client.messages.create(
       from: @twilio_number,
       to: phone_number,
-      body: "Your Shippo PIN is #{pin}."
+      body: "Your Shiparoo PIN is #{pin}."
     )
   end
 

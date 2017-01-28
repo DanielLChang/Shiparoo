@@ -1,14 +1,14 @@
 class PackagesController < ApplicationController
 
   def create
-    @package = Package.find_by(package_params)
+    @package = Package.new(package_params)
 
-    if @package
-      render json: { error: "Package already tracked" }
+    if @package.generate_pin
+      @package.send_pin
     else
-      @package = Package.new(package_params)
-      render json: { package_id: @package.id }
+      render json: { status: error }
     end
+
   end
 
   def update
@@ -24,7 +24,12 @@ class PackagesController < ApplicationController
   private
 
   def package_params
-    params.require(:package).permit(:tracking_number, :phone_number, :realtime_updates)
+    params.require(:package).permit(
+      :tracking_number,
+      :phone_number,
+      :realtime_updates,
+      :pin
+    )
   end
 
 end

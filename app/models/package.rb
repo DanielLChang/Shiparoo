@@ -1,4 +1,4 @@
-require 'twilio-ruby'
+require_relative 'twilio_client'
 
 class Package < ApplicationRecord
 
@@ -13,6 +13,12 @@ class Package < ApplicationRecord
 
   def send_pin
     TwilioClient.instance.send_pin(self.phone_number, self.pin)
+  end
+
+  def send_initial_message()
+  end
+
+  def send_updates()
   end
 
 end
