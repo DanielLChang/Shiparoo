@@ -1,14 +1,17 @@
 class PackagesController < ApplicationController
 
   def create
-    @package = Package.new(package_params)
+    @oackage = Package.find_by(package_params)
 
-    if @package.generate_pin
-      @package.send_pin
+    if @package
+      render json: { error: "Already tracking package!" }
     else
-      render json: { status: error }
-    end
+      @package = Package.new(package_params)
+      @package.generate_pin
+      @package.send_pin
 
+      render json: { package_id: @package.id }
+    end
   end
 
   def update
