@@ -16,9 +16,18 @@ class PackagesController < ApplicationController
 
     if @package
     else
-      render json: { error: "Can not find package" }
+      render json: { error: "Unable to find package" }
     end
 
+  end
+
+  def show
+    @package = Package.find(params[:id])
+    if @package
+      p @package
+    else
+      render json: { error: "Unable to find package" }
+    end
   end
 
   private

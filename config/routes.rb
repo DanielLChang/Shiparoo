@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#root'
 
-  resources :packages, only: [:create, :update]
+  resources :packages, only: [:create, :update, :show]
 
 end

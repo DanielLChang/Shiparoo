@@ -1,4 +1,4 @@
-require_relative 'twilio_client'
+# require_relative 'twilio_client'
 
 class Package < ApplicationRecord
 
