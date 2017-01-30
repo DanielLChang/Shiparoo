@@ -16,25 +16,16 @@ const requireAuth = (nextState, replace) => {
 class Root extends React.Component {
   render() {
     return(
-      <Router history={browserHistory}>
-        <Route path="/" component={App} auth={auth}>
-          <IndexRedirect to="/home" />
-          <Route path="home" component={Home} onEnter={requireAuth} />
-          <Route path="session" component={Login} />
-        </Route>
-      </Router>
+      <Provider store={this.props.store}>
+        <Router history={browserHistory}>
+          <Route path="/" component={App} auth={auth}>
+            <IndexRedirect to="/home" />
+            <Route path="home" component={Home} onEnter={requireAuth} />
+            <Route path="login" component={Login} />
+          </Route>
+        </Router>
+      </Provider>
     );
-    // return(
-    //   <Provider store={this.props.store}>
-    //     <Router history={browserHistory}>
-    //       <Route path="/" component={App} auth={auth}>
-    //         <IndexRedirect to="/home" />
-    //         <Route path="home" component={Home} onEnter={requireAuth} />
-    //         <Route path="login" component={Login} />
-    //       </Route>
-    //     </Router>
-    //   </Provider>
-    // );
   }
 }
 
