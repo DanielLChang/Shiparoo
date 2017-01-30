@@ -1,5 +1,11 @@
 class PackagesController < ApplicationController
 
+  # For testing
+  def index
+    @packages = Package.all
+    render :index
+  end
+
   def create
     @oackage = Package.find_by(package_params)
 
@@ -39,7 +45,6 @@ class PackagesController < ApplicationController
   private
 
   def package_params
-    debugger
     params.require(:package).permit(
       :tracking_number,
       :phone_number,
