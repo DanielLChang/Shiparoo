@@ -5,14 +5,26 @@ class PackagesController < ApplicationController
   #   @package = Package.new
   # end
   #
-  # def show
-  #   url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9205590164917310542443")
-  #   Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
-  #     request = Net::HTTP::Get.new(url.path)
-  #     response = http.request(request)
-  #     render json: response.body
-  #   end
-  # end
+
+  # For testing
+  def index
+    url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9270190164917304202250")
+    Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
+      request = Net::HTTP::Get.new(url.path)
+      response = http.request(request)
+      render json: response.body
+    end
+  end
+
+  # For testing
+  def show
+    url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9205590164917310542443")
+    Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
+      request = Net::HTTP::Get.new(url.path)
+      response = http.request(request)
+      render json: response.body
+    end
+  end
 
   def create
     @oackage = Package.find_by(package_params)
