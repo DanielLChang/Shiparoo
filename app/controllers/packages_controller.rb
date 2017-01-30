@@ -1,9 +1,27 @@
 class PackagesController < ApplicationController
 
   # For testing
+  def new
+    @package = Package.new
+  end
+
+  # For testing
   def index
-    @packages = Package.all
-    render 'packages/index.json.jbuilder'
+    tracking_number = params[:tracking_number]
+    carrier = params[:carrier]
+
+    url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9400110898680009697924")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+
+    res = http.start do |http|
+      req = Net::HTTP::Get.new(url.path)
+      http.request(req)
+    end
+
+    render json: res.body
+    # @packages = Package.all
+    # render 'packages/index.json.jbuilder'
   end
 
   def create
@@ -55,7 +73,19 @@ class PackagesController < ApplicationController
   end
 
   def shippo_status
-    url = "https://api.goshippo.com/v1/tracks/"
+    tracking_number = params[:tracking_number]
+    carrier = params[:carrier]
+
+    url = "https://api.goshippo.com/v1/tracks/#{carrier}/#{tracking_number}/"
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+
+    res = http.start do |http|
+      req = Net::HTTP::Get.new(url.path)
+      http.request(req)
+    end
+
+    render json: res.body
   end
 
 end

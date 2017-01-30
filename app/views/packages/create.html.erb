@@ -1,0 +1,12 @@
+<%= form_for @package, remote: true do |f| %>
+  <div class="form-group">
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <h4>Tracking Number</h4>
+  <div class="form-group">
+    <%= f.text_field :tracking_number %>
+  </div>
+
+  <%= f.submit "Send PIN", class: "btn btn-primary", id: 'send-pin-link' %>
+<% end %>
