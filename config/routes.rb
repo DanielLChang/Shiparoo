@@ -7,6 +7,5 @@ Rails.application.routes.draw do
     resource :user, only: [:create, :show, :update]
     resources :packages, only: [:create, :update, :show, :index]
     resources :webhooks, only: [:create]
-    resource :session, only: [:create, :destroy]
   end
 end

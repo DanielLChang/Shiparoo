@@ -12,9 +12,15 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.from_token_request(user_params)
+
+    render "api/users/show"
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :email, :demo)
+    params.require(:auth).permit(:username, :password, :email, :demo)
   end
 end

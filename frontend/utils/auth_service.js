@@ -1,14 +1,12 @@
 import Auth0Lock from 'auth0-lock';
-import {
-  browserHistory
-} from 'react-router';
+import { browserHistory } from 'react-router';
 
-export default class AuthService {
+class AuthService {
   constructor(clientId, domain) {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:3000/login',
+        redirectUrl: 'http://localhost:3000',
         responseType: 'token'
       }
     });
@@ -21,6 +19,15 @@ export default class AuthService {
   _doAuthentication(authResult) {
     // Saves the user token
     this.setToken(authResult.idToken);
+    lock.getUserInfo(authResult.accessToken, (error, profile) => {
+      if (error) {
+        // Handle error
+        return;
+      }
+
+      localStorage.setItem('accessToken', authResult.accessToken);
+      localStorage.setItem('profile', JSON.stringify(profile));
+    });
     // navigate to the home route
     browserHistory.replace('/home');
   }
@@ -28,16 +35,6 @@ export default class AuthService {
   login() {
     // Call the show method to display the widget.
     this.lock.show();
-    // (err, profile, token) => {
-    //   if (err) {
-    //     return alert(err);
-    //   }
-    //
-    //   let globalProfile = profile;
-    //   let globalToken = token;
-    //
-    //   browserHistory.replace('/home');
-    // }
   }
 
   loggedIn() {
@@ -87,3 +84,5 @@ export default class AuthService {
       .then(response => response.json()) // to parse the response as json
   }
 }
+
+export default AuthService;

@@ -14,16 +14,12 @@
 #
 
 class User < ApplicationRecord
-  attr_reader :password
-
+  has_secure_password
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
-  validates :password, length: { minimum: 6 }, allow_nil: :true
-  validates :email, email: true, allow_blank: true, uniqueness: { case_sensitive: false }
 
-  def self.from_token_payload(payload)
-    # Returns a valid user, `nil` or raise
-    # e.g.
-    #   self.find payload["sub"]
+  def self.from_token_request(request)
+    username = request.params["auth"] && request.params["auth"]["username"]
+    self.find_by(username: username)
   end
 end
