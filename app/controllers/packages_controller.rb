@@ -30,7 +30,7 @@ class PackagesController < ApplicationController
   def show
     @package = Package.find(params[:id])
     if @package
-      p @package
+      render :show
     else
       render json: { error: "Unable to find package" }
     end
@@ -39,6 +39,7 @@ class PackagesController < ApplicationController
   private
 
   def package_params
+    debugger
     params.require(:package).permit(
       :tracking_number,
       :phone_number,
