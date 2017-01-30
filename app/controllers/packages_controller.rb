@@ -1,27 +1,29 @@
 class PackagesController < ApplicationController
 
   # For testing
-  def new
-    @package = Package.new
+  # def new
+  #   @package = Package.new
+  # end
+  #
+
+  # For testing fake package
+  def index
+    url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9270190164917304202250")
+    Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
+      request = Net::HTTP::Get.new(url.path)
+      response = http.request(request)
+      render json: response.body
+    end
   end
 
-  # For testing
-  def index
-    tracking_number = params[:tracking_number]
-    carrier = params[:carrier]
-
-    url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9400110898680009697924")
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-
-    res = http.start do |http|
-      req = Net::HTTP::Get.new(url.path)
-      http.request(req)
+  # For testing real package
+  def show
+    url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9205590164917310542443")
+    Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
+      request = Net::HTTP::Get.new(url.path)
+      response = http.request(request)
+      render json: response.body
     end
-
-    render json: res.body
-    # @packages = Package.all
-    # render 'packages/index.json.jbuilder'
   end
 
   def create
@@ -43,21 +45,13 @@ class PackagesController < ApplicationController
     @package = Package.find(params[:id])
 
     if @package.update(package_params)
-      @package.send_updates
+      @package.send_updates(shippo_status)
+
+      render json: { tracking: shippo_status }
     else
       render json: { error: "Unable to find package" }
     end
 
-  end
-
-  # For testing
-  def show
-    @package = Package.find(params[:id])
-    if @package
-      render 'packages/show.json.jbuilder'
-    else
-      render json: { error: "Unable to find package" }
-    end
   end
 
   private
@@ -76,16 +70,12 @@ class PackagesController < ApplicationController
     tracking_number = params[:tracking_number]
     carrier = params[:carrier]
 
-    url = "https://api.goshippo.com/v1/tracks/#{carrier}/#{tracking_number}/"
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-
-    res = http.start do |http|
-      req = Net::HTTP::Get.new(url.path)
-      http.request(req)
+    url = URI.parse("https://api.goshippo.com/v1/tracks/#{carrier}/#{tracking_number}")
+    Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
+      request = Net::HTTP::Get.new(url.path)
+      response = http.request(request)
+      render json: response.body
     end
-
-    render json: res.body
   end
 
 end
