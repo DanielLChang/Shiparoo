@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import AuthService from 'utils/auth_service';
+import AuthService from '../../utils/auth_service';
 
 class Login extends React.Component {
   render() {
-    const { auth } = this.props;
+    const { auth } = this.props.routes[0];
     return (
       <div className="login-form">
         <h2>Login</h2>

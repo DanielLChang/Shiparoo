@@ -1,7 +1,7 @@
 import React from 'react';
-import {Route, Router, IndexRedirect, browserHistory} from 'react-router';
-import AuthService from 'utils/AuthService';
-import App from './App';
+import {Route, Router, IndexRedirect, browserHistory, Provider } from 'react-router';
+import AuthService from '../utils/auth_service';
+import App from './app';
 import Home from './home/home';
 import Login from './login/login';
 
@@ -16,16 +16,25 @@ const requireAuth = (nextState, replace) => {
 class Root extends React.Component {
   render() {
     return(
-      <Provider store={this.props.store}>
-        <Router history={browserHistory}>
-          <Route path="/" component={App} auth={auth}>
-            <IndexRedirect to="/home" />
-            <Route path="home" component={Home} onEnter={requireAuth} />
-            <Route path="login" component={Login} />
-          </Route>
-        </Router>
-      </Provider>
+      <Router history={browserHistory}>
+        <Route path="/" component={App} auth={auth}>
+          <IndexRedirect to="/home" />
+          <Route path="home" component={Home} onEnter={requireAuth} />
+          <Route path="login" component={Login} />
+        </Route>
+      </Router>
     );
+    // return(
+    //   <Provider store={this.props.store}>
+    //     <Router history={browserHistory}>
+    //       <Route path="/" component={App} auth={auth}>
+    //         <IndexRedirect to="/home" />
+    //         <Route path="home" component={Home} onEnter={requireAuth} />
+    //         <Route path="login" component={Login} />
+    //       </Route>
+    //     </Router>
+    //   </Provider>
+    // );
   }
 }
 
