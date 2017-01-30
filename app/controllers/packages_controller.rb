@@ -9,6 +9,7 @@ class PackagesController < ApplicationController
       @package = Package.new(package_params)
       @package.generate_pin
       @package.send_pin
+      @package.send_initial_message
 
       render json: { package_id: @package.id }
     end
@@ -17,13 +18,15 @@ class PackagesController < ApplicationController
   def update
     @package = Package.find(params[:id])
 
-    if @package
+    if @package.update(package_params)
+      @package.send_updates
     else
       render json: { error: "Unable to find package" }
     end
 
   end
 
+  # For testing
   def show
     @package = Package.find(params[:id])
     if @package
@@ -42,6 +45,10 @@ class PackagesController < ApplicationController
       :realtime_updates,
       :pin
     )
+  end
+
+  def shippo_status
+    url = "https://api.goshippo.com/v1/tracks/"
   end
 
 end

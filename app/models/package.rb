@@ -15,7 +15,11 @@ class Package < ApplicationRecord
     TwilioClient.instance.send_pin(self.phone_number, self.pin)
   end
 
-  def send_initial_message()
+  def send_initial_message
+    TwilioClient.instance.send_initial_message(
+      self.phone_number,
+      self.tracking_number
+    )
   end
 
   def send_updates()

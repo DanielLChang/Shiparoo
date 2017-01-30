@@ -11,11 +11,11 @@ class TwilioClient
     )
   end
 
-  def send_initial_message(phone_number, tracking_number, tracking_status)
+  def send_initial_message(phone_number, tracking_number)
     client.messages.create(
       from: +16506514507,
       to: phone_number,
-      body: "Your #{tracking_number} is currently #{tracking_status}."
+      body: "Your tracking number is: #{tracking_number}."
     )
   end
 
