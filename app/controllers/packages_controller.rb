@@ -3,7 +3,7 @@ class PackagesController < ApplicationController
   # For testing
   def index
     @packages = Package.all
-    render :index
+    render 'packages/index.json.jbuilder'
   end
 
   def create
@@ -36,7 +36,7 @@ class PackagesController < ApplicationController
   def show
     @package = Package.find(params[:id])
     if @package
-      render :show
+      render 'packages/show.json.jbuilder'
     else
       render json: { error: "Unable to find package" }
     end
@@ -49,7 +49,8 @@ class PackagesController < ApplicationController
       :tracking_number,
       :phone_number,
       :realtime_updates,
-      :pin
+      :pin,
+      :carrier
     )
   end
 
