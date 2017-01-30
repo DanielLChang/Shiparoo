@@ -1,15 +1,41 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-
+import {Route, Router, IndexRedirect, browserHistory, Provider } from 'react-router';
+import AuthService from '../utils/auth_service';
 import App from './app';
+import Home from './home/home';
+import Login from './login/login';
 
-const Root = (
-  <Router history={ hashHistory }>
-    <Route path="/" component={ App }>
+const auth = new AuthService('HQyc8BbQc47Drpa85hJca6t6THDNOAXg', 'justinsuen.auth0.com');
 
-    </Route>
-  </Router>
-);
+const requireAuth = (nextState, replace) => {
+  if (!auth.loggedIn()) {
+    replace({ pathname: '/login' });
+  }
+};
+
+class Root extends React.Component {
+  render() {
+    return(
+      <Router history={browserHistory}>
+        <Route path="/" component={App} auth={auth}>
+          <IndexRedirect to="/home" />
+          <Route path="home" component={Home} onEnter={requireAuth} />
+          <Route path="login" component={Login} />
+        </Route>
+      </Router>
+    );
+    // return(
+    //   <Provider store={this.props.store}>
+    //     <Router history={browserHistory}>
+    //       <Route path="/" component={App} auth={auth}>
+    //         <IndexRedirect to="/home" />
+    //         <Route path="home" component={Home} onEnter={requireAuth} />
+    //         <Route path="login" component={Login} />
+    //       </Route>
+    //     </Router>
+    //   </Provider>
+    // );
+  }
+}
 
 export default Root;
