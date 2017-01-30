@@ -22,7 +22,12 @@ class Package < ApplicationRecord
     )
   end
 
-  def send_updates()
+  def send_updates(status)
+    TwilioClient.instance.send_message_update(
+      self.phone_number,
+      self.tracking_number,
+      status
+    )
   end
 
 end

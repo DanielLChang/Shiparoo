@@ -6,7 +6,7 @@ class PackagesController < ApplicationController
   # end
   #
 
-  # For testing
+  # For testing fake package
   def index
     url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9270190164917304202250")
     Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
@@ -16,7 +16,7 @@ class PackagesController < ApplicationController
     end
   end
 
-  # For testing
+  # For testing real package
   def show
     url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9205590164917310542443")
     Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
@@ -45,7 +45,9 @@ class PackagesController < ApplicationController
     @package = Package.find(params[:id])
 
     if @package.update(package_params)
-      @package.send_updates
+      @package.send_updates(shippo_status)
+
+      render json: { tracking: shippo_status }
     else
       render json: { error: "Unable to find package" }
     end
