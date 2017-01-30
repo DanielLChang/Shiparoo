@@ -1,5 +1,7 @@
 import Auth0Lock from 'auth0-lock';
-import { browserHistory } from 'react-router';
+import {
+  browserHistory
+} from 'react-router';
 
 export default class AuthService {
   constructor(clientId, domain) {
@@ -26,6 +28,16 @@ export default class AuthService {
   login() {
     // Call the show method to display the widget.
     this.lock.show();
+    // (err, profile, token) => {
+    //   if (err) {
+    //     return alert(err);
+    //   }
+    //
+    //   let globalProfile = profile;
+    //   let globalToken = token;
+    //
+    //   browserHistory.replace('/home');
+    // }
   }
 
   loggedIn() {
@@ -46,5 +58,32 @@ export default class AuthService {
   logout() {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
+  }
+
+  _checkStatus(response) {
+    // raises an error in case response status is not a success
+    if (response.status >= 200 && response.status < 300) {
+      return response
+    } else {
+      const error = new Error(response.statusText)
+      error.response = response
+      throw error
+    }
+  }
+
+  fetch(url, options) {
+    // performs api calls sending the required authentication headers
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+      // if logged in, includes the authorization header
+    if (this.loggedIn()) {
+      headers['Authorization'] = 'Bearer ' + this.getToken()
+    }
+
+    return fetch(url, {headers, ...options})
+      .then(this._checkStatus) // to raise errors for wrong status
+      .then(response => response.json()) // to parse the response as json
   }
 }
