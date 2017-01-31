@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
   }
-    
+
   render() {
     let children = null;
     if (this.props.children) {
