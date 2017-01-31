@@ -1,5 +1,6 @@
 import React from 'react';
 import merge from 'lodash/merge';
+import PinModal from './pin_modal';
 
 class Package extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class Package extends React.Component {
       tracking_number: "",
       carrier: "ups",
       phone_number: "",
+      pin: "",
       realtime_updates: false,
       invalidPhone: false,
       errorVisible: false,
@@ -92,7 +94,8 @@ class Package extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({ errorVisible: false, invalidPhone: false });
+    debugger;
+    this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
     this.startTracking();
   }
 
@@ -163,13 +166,9 @@ class Package extends React.Component {
         { this.renderErrors() }
 
         <button className="package-form-submit"
-          type="submit">Start Tracking</button>
+          type="submit">Get PIN</button>
 
-        <div id="pin-modal" className="modal" style={{display: 'none'}}>
-          <div className="modal-content">
-            <p>some text</p>
-          </div>
-        </div>
+        <PinModal />
 
       </form>
     );
