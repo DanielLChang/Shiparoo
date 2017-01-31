@@ -13,8 +13,8 @@ export const receiveErrors = (errors) => ({
   errors
 });
 
-export const getPackage = (p) => (dispatch) => (
-  PackageUtil.fetchPackage.then(
+export const getPackage = (carrier, trackingNumber) => (dispatch) => (
+  PackageUtil.fetchPackage(carrier, trackingNumber).then(
     (result) => dispatch(receivePackage(result)),
       (err) => dispatch(receiveErrors(err.responseJSON))
     )

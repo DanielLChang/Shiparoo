@@ -9,6 +9,6 @@ export const createPackage = (data) => {
   return $.ajax({
     method: "POST",
     url: "/packages",
-    data: data
+    data
   });
 };
