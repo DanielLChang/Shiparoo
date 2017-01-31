@@ -1,12 +1,12 @@
 import Auth0Lock from 'auth0-lock';
 import { browserHistory } from 'react-router';
 
-export default class AuthService {
+class AuthService {
   constructor(clientId, domain) {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:3000/login',
+        redirectUrl: 'http://localhost:3000',
         responseType: 'token'
       }
     });
@@ -19,6 +19,15 @@ export default class AuthService {
   _doAuthentication(authResult) {
     // Saves the user token
     this.setToken(authResult.idToken);
+    lock.getUserInfo(authResult.accessToken, (error, profile) => {
+      if (error) {
+        // Handle error
+        return;
+      }
+
+      localStorage.setItem('accessToken', authResult.accessToken);
+      localStorage.setItem('profile', JSON.stringify(profile));
+    });
     // navigate to the home route
     browserHistory.replace('/home');
   }
@@ -47,4 +56,33 @@ export default class AuthService {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
   }
+
+  _checkStatus(response) {
+    // raises an error in case response status is not a success
+    if (response.status >= 200 && response.status < 300) {
+      return response
+    } else {
+      const error = new Error(response.statusText)
+      error.response = response
+      throw error
+    }
+  }
+
+  fetch(url, options) {
+    // performs api calls sending the required authentication headers
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+      // if logged in, includes the authorization header
+    if (this.loggedIn()) {
+      headers['Authorization'] = 'Bearer ' + this.getToken()
+    }
+
+    return fetch(url, {headers, ...options})
+      .then(this._checkStatus) // to raise errors for wrong status
+      .then(response => response.json()) // to parse the response as json
+  }
 }
+
+export default AuthService;
