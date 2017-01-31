@@ -34,7 +34,6 @@ class PackagesController < ApplicationController
       @package = Package.new(package_params)
       @package.generate_pin
       @package.send_pin
-      @package.send_initial_message
 
       render json: { package_id: @package.id }
     end
@@ -61,6 +60,8 @@ class PackagesController < ApplicationController
       :phone_number,
       :realtime_updates,
       :pin,
+      :user_id,
+      :carrier
     )
   end
 
