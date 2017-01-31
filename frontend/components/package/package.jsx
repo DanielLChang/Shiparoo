@@ -9,6 +9,7 @@ class Package extends React.Component {
       carrier: "ups",
       phone_number: "",
       realtime_updates: false,
+      invalidPhone: false,
       errorVisible: false
     };
 
@@ -56,7 +57,7 @@ class Package extends React.Component {
     if (this.validPhoneNumber(this.state.phone_number)) {
       this.createPackage();
     } else {
-      this.setState({ errorVisible: true });
+      this.setState({ invalidPhone: true });
     }
   }
 
@@ -95,6 +96,12 @@ class Package extends React.Component {
       return (
         <div className="package-errors">
           <h4>Invalid tracking number or carrier</h4>
+        </div>
+      );
+    } else if (this.state.invalidPhone) {
+      return (
+        <div className="package-errors">
+          <h4>Invalid phone number</h4>
         </div>
       );
     }
