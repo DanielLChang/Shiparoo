@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import merge from 'lodash/merge';
 
 class Home extends React.Component {
 
@@ -7,11 +8,20 @@ class Home extends React.Component {
     super(props);
     this.state = {
       tracking_number: "",
-      carrier: ""
+      carrier: "UPS",
+      phone_number: "",
+      realtime_updates: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.toggleUpdates = this.toggleUpdates.bind(this);
+  }
+
+  toggleUpdates(field) {
+    return (e) => this.setState({
+      [field]: !this.state.realtime_updates
+    });
   }
 
   update(field) {
@@ -47,6 +57,21 @@ class Home extends React.Component {
             <option value="UberRUSH">UberRUSH</option>
             <option value="DHL Express">DHL Express</option>
           </select>
+        </div>
+
+        <div className="phone-number-container">
+          <input
+            className="phone-number-input"
+            type="text"
+            placeholder="Phone Number"
+            onChange={ this.update("phone_number")}>
+          </input>
+
+          <input
+            type="checkbox"
+            onChange={ this.toggleUpdates("realtime_updates") }>
+          </input>
+
         </div>
 
         <input type="submit" value="Start Tracking"></input>
