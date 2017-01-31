@@ -9,7 +9,7 @@ class Package extends React.Component {
       carrier: "ups",
       phone_number: "",
       realtime_updates: false,
-      invalid_params: false
+      errorVisible: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,8 +43,11 @@ class Package extends React.Component {
         if (result.tracking_status !== null) {
           this.handleValidTracking();
         } else {
-          this.setState({ invalid_params: true });
+          this.setState({ errorVisible: true });
         }
+      },
+      error: () => {
+        this.setState({ errorVisible: true });
       }
     });
   }
@@ -53,7 +56,7 @@ class Package extends React.Component {
     if (this.validPhoneNumber(this.state.phone_number)) {
       this.createPackage();
     } else {
-      this.setState({ invalid_params: true });
+      this.setState({ errorVisible: true });
     }
   }
 
@@ -67,7 +70,6 @@ class Package extends React.Component {
   createPackage() {
     const p = {
       tracking_number: this.state.tracking_number,
-      carrier: this.state.carrier,
       phone_number: this.state.phone_number,
 			realtime_updates: this.state.realtime_updates
     };
@@ -77,16 +79,25 @@ class Package extends React.Component {
       url: "/packages",
       data: { package: p },
       success: (res) => {
-        this.setState({
-          myModal: true
-        });
+        document.getElementById('pin-modal').style.display = "block";
       }
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ errorVisible: false });
     this.startTracking();
+  }
+
+  renderErrors() {
+    if (this.state.errorVisible) {
+      return (
+        <div className="package-errors">
+          <h4>Invalid tracking number or carrier</h4>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -129,11 +140,19 @@ class Package extends React.Component {
             </input>
             Check to receive SMS updates.
           </label>
-
         </div>
+
+        { this.renderErrors() }
 
         <button className="package-form-submit"
           type="submit">Start Tracking</button>
+
+        <div id="pin-modal" className="modal" style={{display: 'none'}}>
+          <div className="modal-content">
+            <p>some text</p>
+          </div>
+        </div>
+
       </form>
     );
   }
