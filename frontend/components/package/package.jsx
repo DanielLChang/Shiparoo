@@ -10,7 +10,8 @@ class Package extends React.Component {
       phone_number: "",
       realtime_updates: false,
       invalidPhone: false,
-      errorVisible: false
+      errorVisible: false,
+      alreadyTracking: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,7 +73,8 @@ class Package extends React.Component {
     const p = {
       tracking_number: this.state.tracking_number,
       phone_number: this.state.phone_number,
-			realtime_updates: this.state.realtime_updates
+			realtime_updates: this.state.realtime_updates,
+      carrier: this.state.carrier
     };
 
     $.ajax({
@@ -81,13 +83,16 @@ class Package extends React.Component {
       data: { package: p },
       success: (res) => {
         document.getElementById('pin-modal').style.display = "block";
+      },
+      error: () => {
+        this.setState({ alreadyTracking: true });
       }
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({ errorVisible: false });
+    this.setState({ errorVisible: false, invalidPhone: false });
     this.startTracking();
   }
 
@@ -102,6 +107,12 @@ class Package extends React.Component {
       return (
         <div className="package-errors">
           <h4>Invalid phone number</h4>
+        </div>
+      );
+    } else if (this.state.alreadyTracking) {
+      return (
+        <div className="package-errors">
+          <h4>Already tracking package!</h4>
         </div>
       );
     }
