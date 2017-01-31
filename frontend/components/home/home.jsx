@@ -29,23 +29,25 @@ class Home extends React.Component {
     return (
       <form className="home-container"
             onSubmit={ this.handleSubmit }>
-        <h2>Home</h2>
+        <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1485839980/Logomakr_5f0q7A_z7smff.png"></img>
+        <h2>Shiparoo</h2>
 
-        <h3>Tracking Number</h3>
-        <input
-          type="text"
-          placeholder="tracking number"
-          onChange={ this.update("tracking_number") }>
-        </input>
+        <div className="tracking-number-container">
+          <input
+            type="text"
+            placeholder="Tracking Number"
+            onChange={ this.update("tracking_number") }>
+          </input>
 
-        <select onChange={ this.update("carrier") }>
-          <option value="UPS">UPS</option>
-          <option value="USPS">USPS</option>
-          <option value="Parcelforce">Parcelforce</option>
-          <option value="Deutsche Post">Deutsche Post</option>
-          <option value="UberRUSH">UberRUSH</option>
-          <option value="DHL Express">DHL Express</option>
-        </select>
+          <select onChange={ this.update("carrier") }>
+            <option value="UPS">UPS</option>
+            <option value="USPS">USPS</option>
+            <option value="Parcelforce">Parcelforce</option>
+            <option value="Deutsche Post">Deutsche Post</option>
+            <option value="UberRUSH">UberRUSH</option>
+            <option value="DHL Express">DHL Express</option>
+          </select>
+        </div>
 
         <input type="submit" value="Start Tracking"></input>
       </form>
