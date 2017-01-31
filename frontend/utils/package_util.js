@@ -1,4 +1,4 @@
-export const getPackage = (carrier, trackingNumber) => {
+export const fetchPackage = (carrier, trackingNumber) => {
   return $.ajax({
     method: "GET",
     url: `https://api.goshippo.com/tracks/${carrier}/${trackingNumber}`
