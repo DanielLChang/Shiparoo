@@ -6,6 +6,7 @@ import PackageReducer from './package_reducer';
 const rootReducer = combineReducers({
   session: SessionReducer,
   package: PackageReducer
+
 });
 
 export default rootReducer;

@@ -2,7 +2,7 @@ import { RECEIVE_PACKAGE } from '../actions/package_actions';
 import merge from 'lodash/merge';
 
 const PackageReducer = (state = {}, action) => {
-  Object.freeze(state)
+  Object.freeze(state);
 
   switch(action.type) {
     case RECEIVE_PACKAGE:
@@ -13,4 +13,4 @@ const PackageReducer = (state = {}, action) => {
   }
 };
 
-export default BenchesReducer;
+export default PackageReducer;
