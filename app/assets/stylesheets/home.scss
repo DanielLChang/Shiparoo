@@ -20,6 +20,7 @@ body {
     box-shadow: 0 1px 2px rgba(0,0,0,.1);
     border-radius: 5px;
     background-color: #fcfcfc;
+    margin-bottom: 30px;
     input {
       height: 45px;
       width: 250px;
@@ -30,5 +31,31 @@ body {
       height: 51px;
       font-size: 15px;
     }
+  }
+  .phone-number-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 500px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    border-radius: 5px;
+    background-color: #fcfcfc;
+    margin-bottom: 30px;
+    .phone-number-input {
+      height: 45px;
+      width: 250px;
+      font-size: 15px;
+      padding-left: 10px;
+      margin-bottom: 15px;
+    }
+  }
+  .package-form-submit {
+    height: 45px;
+    width: 500px;
+    font-size: 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    border-radius: 5px;
   }
 }

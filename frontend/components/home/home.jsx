@@ -67,14 +67,18 @@ class Home extends React.Component {
             onChange={ this.update("phone_number")}>
           </input>
 
-          <input
-            type="checkbox"
-            onChange={ this.toggleUpdates("realtime_updates") }>
-          </input>
+          <label className="package-updates">
+            <input
+              type="checkbox"
+              onChange={ this.toggleUpdates("realtime_updates") }>
+            </input>
+            Check to receive SMS updates.
+          </label>
 
         </div>
 
-        <input type="submit" value="Start Tracking"></input>
+        <button className="package-form-submit"
+          type="submit">Start Tracking</button>
       </form>
     );
   }
