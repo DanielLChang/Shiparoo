@@ -1,9 +1,10 @@
 import React from 'react';
-import {Route, Router, IndexRedirect, browserHistory, Provider } from 'react-router';
+import { Provider } from 'react-redux';
+import { Route, Router, IndexRedirect, browserHistory } from 'react-router';
 import AuthService from '../utils/auth_service';
 import App from './app';
 import Home from './home/home';
-import Login from './login/login';
+import LoginContainer from './login/login_container';
 
 const auth = new AuthService('HQyc8BbQc47Drpa85hJca6t6THDNOAXg', 'justinsuen.auth0.com');
 
@@ -21,7 +22,7 @@ class Root extends React.Component {
           <Route path="/" component={App} auth={auth}>
             <IndexRedirect to="/home" />
             <Route path="home" component={Home} onEnter={requireAuth} />
-            <Route path="login" component={Login} />
+            <Route path="session" component={LoginContainer} />
           </Route>
         </Router>
       </Provider>

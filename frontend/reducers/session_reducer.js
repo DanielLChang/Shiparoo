@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from '../actions/session_action';
+import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from '../actions/session_actions';
 import jwtDecode from 'jwt-decode';
 
 const checkTokenExpiry = () => {
