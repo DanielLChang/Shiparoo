@@ -1,6 +1,5 @@
 import React from 'react';
 import merge from 'lodash/merge';
-import { getPackage } from '../../actions/package_action';
 
 class Package extends React.Component {
   constructor(props) {
@@ -10,11 +9,16 @@ class Package extends React.Component {
       carrier: "ups",
       phone_number: "",
       realtime_updates: false,
+      invalid_params: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.toggleUpdates = this.toggleUpdates.bind(this);
+    this.startTracking = this.startTracking.bind(this);
+    this.handleValidTracking = this.handleValidTracking.bind(this);
+    this.validPhoneNumber = this.validPhoneNumber.bind(this);
+    this.createPackage = this.createPackage.bind(this);
   }
 
   toggleUpdates(field) {
@@ -29,10 +33,60 @@ class Package extends React.Component {
     });
   }
 
+  startTracking() {
+    const url = `https://api.goshippo.com/v1/tracks/${this.state.carrier}/${this.state.tracking_number}`;
+
+    $.ajax({
+      method: "GET",
+      url: url,
+      success: (result) => {
+        if (result.tracking_status !== null) {
+          this.handleValidTracking();
+        } else {
+          this.setState({ invalid_params: true });
+        }
+      }
+    });
+  }
+
+  handleValidTracking() {
+    if (this.validPhoneNumber(this.state.phone_number)) {
+      this.createPackage();
+    } else {
+      this.setState({ invalid_params: true });
+    }
+  }
+
+  validPhoneNumber(phoneNumber) {
+    if (phoneNumber.length !== 10) {
+      return false;
+    }
+    return (phoneNumber.match(/\d{10}/) !== null);
+  }
+
+  createPackage() {
+    const p = {
+      tracking_number: this.state.tracking_number,
+      carrier: this.state.carrier,
+      phone_number: this.state.phone_number,
+			realtime_updates: this.state.realtime_updates
+    };
+
+    $.ajax({
+      method: "POST",
+      url: "/packages",
+      data: { package: p },
+      success: (res) => {
+        this.setState({
+          myModal: true
+        });
+      }
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    let data = getPackage(this.state.carrier, this.state.trackingNumber);
-    debugger;
+    this.startTracking();
   }
 
   render() {

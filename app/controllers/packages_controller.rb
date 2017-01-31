@@ -62,7 +62,6 @@ class PackagesController < ApplicationController
       :phone_number,
       :realtime_updates,
       :pin,
-      :carrier
     )
   end
 
