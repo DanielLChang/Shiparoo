@@ -5,7 +5,8 @@ import PackageReducer from './package_reducer';
 
 const rootReducer = combineReducers({
   session: SessionReducer,
-  packages: PackageReducer
+  package: PackageReducer
+
 });
 
 export default rootReducer;

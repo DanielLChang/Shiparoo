@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130200138) do
+ActiveRecord::Schema.define(version: 20170131190707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20170130200138) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "pin",                              null: false
+    t.integer  "user_id"
+    t.string   "carrier"
     t.index ["tracking_number", "phone_number"], name: "index_packages_on_tracking_number_and_phone_number", unique: true, using: :btree
   end
 

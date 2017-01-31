@@ -1,21 +1,13 @@
-import { RECEIVE_PACKAGE } from '../actions/package_action';
-
+import { RECEIVE_PACKAGE } from '../actions/package_actions';
 import merge from 'lodash/merge';
 
-const _nullState = {
-  package: null,
-  errors: []
-};
-
-const PackageReducer = (state = _nullState, action) => {
+const PackageReducer = (state = {}, action) => {
   Object.freeze(state);
 
-  let newState = merge({}, state);
-
-  switch (action.type) {
+  switch(action.type) {
     case RECEIVE_PACKAGE:
-      newState.package = action.package;
-      return newState;
+      const newPackage = {[action.p.id]: action.p};
+      return merge({}, state, newPackage);
     default:
       return state;
   }
