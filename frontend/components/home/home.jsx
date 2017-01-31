@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import merge from 'lodash/merge';
+import { getPackage } from '../../utils/package_util';
 
 class Home extends React.Component {
 
@@ -8,7 +9,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       tracking_number: "",
-      carrier: "UPS",
+      carrier: "ups",
       phone_number: "",
       realtime_updates: false,
     };
@@ -32,6 +33,7 @@ class Home extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let data = getPackage(this.state.carrier, this.state.tracking_number);
     debugger;
   }
 
@@ -50,12 +52,13 @@ class Home extends React.Component {
           </input>
 
           <select onChange={ this.update("carrier") }>
-            <option value="UPS">UPS</option>
-            <option value="USPS">USPS</option>
-            <option value="Parcelforce">Parcelforce</option>
-            <option value="Deutsche Post">Deutsche Post</option>
-            <option value="UberRUSH">UberRUSH</option>
-            <option value="DHL Express">DHL Express</option>
+            <option value="ups">UPS</option>
+            <option value="usps">USPS</option>
+            <option value="fedex">FedEX</option>
+            <option value="canada_post">Canada Post</option>
+            <option value="lasership">Lasership</option>
+            <option value="dhl_express">DHL Express</option>
+            <option value="mondial_relay">Mondial Relay</option>
           </select>
         </div>
 
