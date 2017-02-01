@@ -94,7 +94,6 @@ class Package extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
     this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
     this.startTracking();
   }

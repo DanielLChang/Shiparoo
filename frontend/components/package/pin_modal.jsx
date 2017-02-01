@@ -11,6 +11,15 @@ class PinModal extends React.Component {
     this.handleModalSubmit = this.handleModalSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const modal = document.getElementById("pin-modal");
+    const span = document.getElementsByClassName("close")[0];
+
+    span.onclick = () => {
+      modal.style.display = "none";
+    };
+  }
+
   update(field) {
     return (e) => this.setState({
       [field]: e.currentTarget.value
@@ -34,6 +43,11 @@ class PinModal extends React.Component {
 
         style={{display: 'none'}}>
         <div className="modal-content">
+          <div className="modal-header">
+            <span className="close">X</span>
+            <h2>Verify Your Number To Start Tracking!</h2>
+          </div>
+
           <input
             className="pin-input"
             type="text"

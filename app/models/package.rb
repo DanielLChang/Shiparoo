@@ -37,11 +37,16 @@ class Package < ApplicationRecord
   end
 
   def send_updates(status)
+    package_status = JSON.parse(status)
     TwilioClient.instance.send_message_update(
       self.phone_number,
       self.tracking_number,
-      status
+      package_status["tracking_status"]["status"]
     )
+  end
+
+  def verify(other_pin)
+    self.update_attributes(verified: true) if self.pin == other_pin
   end
 
 end

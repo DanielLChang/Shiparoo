@@ -23,7 +23,7 @@ class TwilioClient
     client.messages.create(
       from: +16506514507,
       to: phone_number,
-      body: "Your #{tracking_number} is currently #{tracking_status}."
+      body: "Your shipment (#{tracking_number}) is currently #{tracking_status}."
     )
   end
 
