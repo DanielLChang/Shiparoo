@@ -1,37 +1,35 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-// import AuthService from '../../utils/auth_service';
+
+import Auth0Lock from 'auth0-lock'
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
   handleLoginClick() {
-    this.props.login();
-  }
+    const lock = new Auth0Lock('HQyc8BbQc47Drpa85hJca6t6THDNOAXg', 'justinsuen.auth0.com', {
+      auth: {
+        redirectUrl: 'http://localhost:3000',
+        responseType: 'code',
+        params: {
+          scope: 'openid email'
+        }
+      }
+    });
 
-  handleLogoutClick() {
-    this.props.logout();
+    lock.show();
   }
 
   render() {
-    const { isAuthenticated, profile } = this.props;
     return (
         <div className="session-container">
-          {!isAuthenticated ? (
-            <div className="session-form">
-              <h2>Login</h2>
-              <button onClick={this.handleLoginClick}>Login</button>
-            </div>
-          ) : (
-            <div className="session-form">
-              <h2>Welcome</h2>
-              <button onClick={this.handleLogoutClick}>Logout</button>
-            </div>
-          )}
+          <div className="session-form">
+            <h2>Login</h2>
+            <button onClick={this.handleLoginClick}>Login</button>
+          </div>
         </div>
     );
   }

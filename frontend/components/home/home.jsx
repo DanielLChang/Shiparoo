@@ -1,16 +1,21 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { withRouter, Link } from 'react-router';
+
 import Package from '../package/package';
 
 class Home extends React.Component {
-
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <Package />
+      <div className={"home-container"}>
+        <Package />
+        { this.props.loggedIn ?
+          <Link to="/login">Logout</Link> :
+          <Link to="/login">Login</Link> }
+      </div>
     );
   }
 }

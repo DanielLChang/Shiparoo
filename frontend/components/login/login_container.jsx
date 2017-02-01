@@ -1,21 +1,17 @@
 import { connect } from 'react-redux';
-import { login, logout } from '../../actions/session_actions';
+import { login, logout, signup } from '../../actions/session_actions';
 import Login from './login';
 
 
-const mapStateToProps = ({ session }) => {
-  const { isAuthenticated, profile } = session;
+const mapStateToProps = ({ session }) => ({
+  loggedIn: Boolean(session.currentUser),
+  errors: session.errors
+});
 
+const mapDispatchToProps = (dispatch, { location }) => {
   return {
-    isAuthenticated,
-    profile
-  };
-};
-
-const mapDispatchToProps = () => {
-  return {
-    login,
-    logout
+    signup: user => dispatch(signup(user)),
+    login: user => dispatch(login(user))
   };
 };
 
