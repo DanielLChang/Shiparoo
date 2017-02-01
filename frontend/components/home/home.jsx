@@ -2,6 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import Package from '../package/package';
 
+import PackageShowContainer from '../package/package_show_container';
+
 class Home extends React.Component {
 
   constructor(props) {
@@ -10,7 +12,10 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Package />
+      <div>
+        <Package />
+        <PackageShowContainer />
+      </div>
     );
   }
 }
