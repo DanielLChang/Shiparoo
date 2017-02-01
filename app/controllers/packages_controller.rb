@@ -41,7 +41,6 @@ class PackagesController < ApplicationController
 
   def update
     @package = Package.find(params[:id])
-    debugger
 
     if @package.verify(package_params[:pin])
       @package.send_updates(shippo_status)

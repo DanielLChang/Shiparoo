@@ -41,8 +41,7 @@ class Package < ApplicationRecord
     TwilioClient.instance.send_message_update(
       self.phone_number,
       self.tracking_number,
-      package_status["tracking_status"]["status"],
-      package_status["carrier"]
+      package_status["tracking_status"]["status"]
     )
   end
 
