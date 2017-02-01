@@ -14,8 +14,8 @@ class PackageShow extends React.Component {
         <div className="package-map">
           <PackageMap
             getPackage={this.props.getPackage}
+            package={this.props.package}
             />
-          <span>Hello</span>
         </div>
       </div>
     );

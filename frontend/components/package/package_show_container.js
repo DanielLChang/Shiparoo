@@ -3,7 +3,7 @@ import { getPackage } from '../../actions/package_actions';
 
 import PackageShow from './package_show';
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
   return;
 };
 
