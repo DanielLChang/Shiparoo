@@ -41,8 +41,9 @@ class PackagesController < ApplicationController
 
   def update
     @package = Package.find(params[:id])
+    debugger
 
-    if @package.update(package_params)
+    if @package.verify(package_params[:pin])
       @package.send_updates(shippo_status)
 
       render json: { tracking: shippo_status }
@@ -66,15 +67,25 @@ class PackagesController < ApplicationController
   end
 
   def shippo_status
-    tracking_number = params[:tracking_number]
-    carrier = params[:carrier]
+    tracking_number = package_params[:tracking_number]
+    carrier = package_params[:carrier]
 
-    url = URI.parse("https://api.goshippo.com/v1/tracks/#{carrier}/#{tracking_number}")
-    Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
-      request = Net::HTTP::Get.new(url.path)
-      response = http.request(request)
-      render json: response.body
+    url = URI.parse("https://api.goshippo.com/v1/tracks/")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+
+    response = http.start do |http|
+      request = Net::HTTP::Post.new(url.path)
+      request["Authorization"] = "ShippoToken shippo_test_8ca225cf58d99ecf339f9e2a9f0dc5bde8eb7dd2"
+      request.set_form_data(
+        tracking_number: tracking_number,
+        carrier: carrier
+      )
+
+      http.request(request)
     end
+
+    response.body
   end
 
 end

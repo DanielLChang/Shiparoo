@@ -1,3 +1,10 @@
+export const verifyPackage = (id) => {
+  return $.ajax({
+    method: "PATCH",
+    url: `/packages/${id}`
+  });
+};
+
 export const fetchPackage = (carrier, trackingNumber) => {
   return $.ajax({
     method: "GET",
