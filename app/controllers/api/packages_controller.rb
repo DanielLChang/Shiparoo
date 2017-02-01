@@ -1,4 +1,4 @@
-class PackagesController < ApplicationController
+class Api::PackagesController < ApplicationController
 
   # For testing
   # def new

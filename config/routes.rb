@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resource :user, only: [:create, :show, :update]
     resources :webhooks, only: [:create]
+    resources :packages, only: [:create, :update, :show, :index]
   end
-  resources :packages, only: [:create, :update, :show, :index]
 end

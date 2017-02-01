@@ -28,7 +28,7 @@ class Login extends React.Component {
             </div>
           ) : (
             <div className="session-form">
-              <h2>Welcome, { profile.name }</h2>
+              <h2>Welcome</h2>
               <button onClick={this.handleLogoutClick}>Logout</button>
             </div>
           )}
