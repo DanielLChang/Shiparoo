@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link, browserHistory } from 'react-router';
+import { isEmpty } from 'lodash';
 
 import Package from '../package/package';
 
@@ -9,6 +10,8 @@ class Home extends React.Component {
   }
 
   render() {
+    const { auth } = this.props;
+
     return (
       <div className={"home-container"}>
         <Package />

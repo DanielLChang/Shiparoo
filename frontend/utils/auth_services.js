@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 export default class AuthService extends EventEmitter {
   constructor() {
     super();
-    
+
     this.lock = new Auth0Lock('HQyc8BbQc47Drpa85hJca6t6THDNOAXg', 'justinsuen.auth0.com', {
       auth: {
         redirectUrl: 'http://localhost:3000/home',
@@ -44,7 +44,7 @@ export default class AuthService extends EventEmitter {
 
   getProfile() {
     const profile = localStorage.getItem('profile');
-    return profile ? JSON.parse(localStorage.profile) : {};
+    return profile ? JSON.parse(profile) : {};
   }
 
   logout() {

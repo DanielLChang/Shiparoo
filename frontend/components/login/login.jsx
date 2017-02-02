@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { withRouter, browserHistory } from 'react-router';
 
-import AuthService from '../../utils/auth_services';
-
 class Login extends Component {
   render() {
-    const auth = new AuthService();
+    const { auth } = this.props;
 
     return (
       <div className="login-container">
