@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
-import Auth0Lock from 'auth0-lock';
 import { browserHistory } from 'react-router';
+import Auth0Lock from 'auth0-lock';
+import { isTokenExpired } from './jwt_helper';
 
 export default class AuthService extends EventEmitter {
   constructor() {
@@ -34,7 +35,8 @@ export default class AuthService extends EventEmitter {
   }
 
   loggedIn() {
-    return !!this.getToken();
+    const token = this.getToken();
+    return !!token && !isTokenExpired(token);
   }
 
   setProfile(profile) {

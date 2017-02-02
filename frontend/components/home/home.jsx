@@ -1,12 +1,19 @@
 import React from 'react';
 import { withRouter, Link, browserHistory } from 'react-router';
-import { isEmpty } from 'lodash';
 
 import Package from '../package/package';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loggedIn: this.props.auth.loggedIn()
+    };
+  }
+
+  logout() {
+    this.props.auth.logout();
+    this.setState({ loggedIn: false });
   }
 
   render() {
@@ -15,7 +22,10 @@ class Home extends React.Component {
     return (
       <div className={"home-container"}>
         <Package />
-        <Link to="login">Login</Link>
+        { auth.loggedIn() ?
+          <button onClick={this.logout.bind(this)}>Logout</button> :
+          <Link to="login">Login</Link>
+        }
       </div>
     );
   }
