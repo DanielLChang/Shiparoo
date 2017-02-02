@@ -20,7 +20,7 @@ class Header extends React.Component {
     return (
       <div className="header">
         <Link to="home" className="logo">
-          <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1485839980/Logomakr_5f0q7A_z7smff.png"></img>
+          <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png"></img>
           <h1>Shiparoo</h1>
         </Link>
         { auth.loggedIn() ?
