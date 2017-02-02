@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router';
+import range from 'lodash/range';
 
 let _mapOptions = {
   center: {lat: 37.773972, lng: -122.431297}, // San Francisco coords
@@ -53,6 +54,17 @@ class PackageMap extends React.Component {
         strokeWeight: 2
       });
       route.setMap(this.map);
+
+      let marker;
+      for (let a = 0; a < this.routeCoordinates.length; a++) {
+        let position = this.routeCoordinates[a];
+        marker = new google.maps.Marker({
+          position: position,
+          map: this.map,
+          draggable: true,
+          animation: google.maps.Animation.DROP
+        });
+      }
     });
   }
 
