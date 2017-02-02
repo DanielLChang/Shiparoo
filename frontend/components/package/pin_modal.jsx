@@ -27,7 +27,7 @@ class PinModal extends React.Component {
   }
 
   startUpdate() {
-
+    modal.style.display = "none";
   }
 
   handleModalSubmit(e) {
@@ -48,12 +48,14 @@ class PinModal extends React.Component {
             <h2>Verify Your Number To Start Tracking!</h2>
           </div>
 
-          <input
-            className="pin-input"
-            type="text"
-            placeholder="Enter PIN to start tracking!"
-            onChange={ this.update("pin")}>
-          </input>
+          <div className="modal-body">
+            <input
+              className="pin-input"
+              type="text"
+              placeholder="Enter PIN"
+              onChange={ this.update("pin")}>
+            </input>
+          </div>
 
           <button className="modal-submit" onClick={ this.handleModalSubmit }>
             Start Tracking!

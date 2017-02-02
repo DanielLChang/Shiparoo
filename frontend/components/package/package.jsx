@@ -105,13 +105,15 @@ class Package extends React.Component {
           <h4>Invalid tracking number or carrier</h4>
         </div>
       );
-    } else if (this.state.invalidPhone) {
+    }
+    if (this.state.invalidPhone) {
       return (
         <div className="package-errors">
           <h4>Invalid phone number</h4>
         </div>
       );
-    } else if (this.state.alreadyTracking) {
+    }
+    if (this.state.alreadyTracking) {
       return (
         <div className="package-errors">
           <h4>Already tracking package!</h4>

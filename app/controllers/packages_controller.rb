@@ -1,4 +1,5 @@
 class PackagesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   # For testing
   # def new
