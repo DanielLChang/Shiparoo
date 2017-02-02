@@ -1,20 +1,68 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#root {
+  background: #2B3E4B;
+  background: -webkit-linear-gradient(to right, #2B3E4B , #588DA8);
+  background: linear-gradient(to right, #2B3E4B , #588DA8);
+}
+
+#root, .app-container, .home-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  width: 100vw;
+  height: 8vh;
+
+  padding: 20px 30px;
+  box-sizing: border-box;
+  background-color: rgba(47, 165, 203, 0.3);
+  z-index: 10;
+
+  display: flex;
+  flex-direction: row-reverse;
   align-items: center;
 }
 
 .home-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-container {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 1400px) {
-  .home-container {
+  #root, .app-container, .home-container {
+    height: auto;
+  }
+
+  .main-container {
     flex-direction: column;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -23,17 +71,22 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-right: 60px;
+  z-index: 5;
 
-  .tracking-number-container {
+  .tracking-number-container, .phone-number-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 150px;
     width: 500px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
     border-radius: 5px;
     background-color: #fcfcfc;
     margin-bottom: 30px;
+  }
+
+  .tracking-number-container {
+    flex-direction: row;
 
     input {
       height: 45px;
@@ -49,16 +102,7 @@ body {
   }
 
   .phone-number-container {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    width: 500px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    border-radius: 5px;
-    background-color: #fcfcfc;
-    margin-bottom: 30px;
 
     .phone-number-input {
       height: 45px;
@@ -78,7 +122,9 @@ body {
   }
 }
 
-.map {
-  height: 500px;
-  width: 800px;
+@media (max-width: 1400px) {
+  .form-container {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
 }
