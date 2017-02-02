@@ -6,7 +6,7 @@ const PackageReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_PACKAGE:
-      const newPackage = {[action.p.id]: action.p};
+      const newPackage = {[action.package.tracking_number]: action.package};
       return merge({}, state, newPackage);
     default:
       return state;

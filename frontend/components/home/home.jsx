@@ -3,6 +3,8 @@ import { withRouter, Link, browserHistory } from 'react-router';
 
 import Package from '../package/package';
 
+import PackageShowContainer from '../package/package_show_container';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -21,11 +23,12 @@ class Home extends React.Component {
 
     return (
       <div className={"home-container"}>
-        <Package />
         { auth.loggedIn() ?
           <button onClick={this.logout.bind(this)}>Logout</button> :
           <Link to="login">Login</Link>
         }
+        <Package />
+        <PackageShowContainer />
       </div>
     );
   }
