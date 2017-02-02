@@ -41,7 +41,7 @@ class PackageMap extends React.Component {
   }
 
   componentDidUpdate() {
-    $(document).ajaxComplete(() => {
+    $(document).ajaxStop(() => {
       this.routeCoordinates = this.routeCoordinates.filter((element) => {
          return element !== undefined;
       });
@@ -52,7 +52,6 @@ class PackageMap extends React.Component {
         strokeOpacity: 1.0,
         strokeWeight: 2
       });
-      debugger;
       route.setMap(this.map);
     });
   }
