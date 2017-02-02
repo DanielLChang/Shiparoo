@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { Route, Router, IndexRedirect, browserHistory } from 'react-router';
 
 import App from './app';
-import HomeContainer from './home/home_container';
-import LoginContainer from './login/login_container';
+// import HomeContainer from './home/home_container';
+import Home from './home/home';
 
 class Root extends React.Component {
   render() {
@@ -13,8 +13,7 @@ class Root extends React.Component {
         <Router history={browserHistory}>
           <Route path="/" component={App}>
             <IndexRedirect to="/home" />
-            <Route path="home" component={HomeContainer}/>
-            <Route path="login" component={LoginContainer}/>
+            <Route path="home" component={Home}/>
           </Route>
         </Router>
       </Provider>
