@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Login from './login';
+import Home from './home';
 
 
 const mapStateToProps = ({ session }) => ({
@@ -10,4 +10,4 @@ const mapStateToProps = ({ session }) => ({
 export default connect(
   mapStateToProps,
   null
-)(Login);
+)(Home);

@@ -1,7 +1,7 @@
 export const verifyPackage = (id) => {
   return $.ajax({
     method: "PATCH",
-    url: `/packages/${id}`
+    url: `api/packages/${id}`
   });
 };
 
@@ -15,7 +15,7 @@ export const fetchPackage = (carrier, trackingNumber) => {
 export const createPackage = (data) => {
   return $.ajax({
     method: "POST",
-    url: "/packages",
+    url: "api/packages",
     data
   });
 };
