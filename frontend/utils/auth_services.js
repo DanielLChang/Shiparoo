@@ -20,7 +20,6 @@ export default class AuthService extends EventEmitter {
 
   _doAuthentication(authResult) {
     this.setToken(authResult.idToken);
-    browserHistory.replace('/home');
     this.lock.getProfile(authResult.idToken, (error, profile) => {
       if (error) {
         console.log('Error loading the Profile', error);
@@ -28,6 +27,7 @@ export default class AuthService extends EventEmitter {
         this.setProfile(profile);
       }
     });
+    browserHistory.replace('/home');
   }
 
   login() {
@@ -58,7 +58,7 @@ export default class AuthService extends EventEmitter {
   }
 
   logout() {
-    localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
+    localStorage.removeItem('id_token');
   }
 }
