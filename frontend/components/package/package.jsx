@@ -81,7 +81,7 @@ class Package extends React.Component {
 
     $.ajax({
       method: "POST",
-      url: "/packages",
+      url: "api/packages",
       data: { package: p },
       success: (res) => {
         document.getElementById('pin-modal').style.display = "block";
