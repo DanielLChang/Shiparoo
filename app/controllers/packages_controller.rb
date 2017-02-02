@@ -29,6 +29,7 @@ class PackagesController < ApplicationController
 
   def create
     @oackage = Package.find_by(package_params)
+    debugger
     if @package
       render json: { error: "Already tracking package!" }
     else
