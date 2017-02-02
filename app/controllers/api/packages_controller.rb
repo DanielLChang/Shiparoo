@@ -1,4 +1,4 @@
-class PackagesController < ApplicationController
+class Api::PackagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   # For testing
@@ -19,12 +19,14 @@ class PackagesController < ApplicationController
 
   # For testing real package
   def show
-    url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9205590164917310542443")
-    Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
-      request = Net::HTTP::Get.new(url.path)
-      response = http.request(request)
-      render json: response.body
-    end
+    # url = URI.parse("https://api.goshippo.com/v1/tracks/usps/9205590164917310542443")
+    # Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
+    #   request = Net::HTTP::Get.new(url.path)
+    #   response = http.request(request)
+    #   render json: response.body
+    # end
+    @package = Package.find(params[:id])
+    render :show
   end
 
   def create

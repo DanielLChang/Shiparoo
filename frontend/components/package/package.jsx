@@ -81,7 +81,7 @@ class Package extends React.Component {
 
     $.ajax({
       method: "POST",
-      url: "/packages",
+      url: "api/packages",
       data: { package: p },
       success: (res) => {
         document.getElementById('pin-modal').style.display = "block";
@@ -124,7 +124,7 @@ class Package extends React.Component {
 
   render() {
     return(
-      <form className="home-container"
+      <form className="form-container"
             onSubmit={ this.handleSubmit }>
         <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1485839980/Logomakr_5f0q7A_z7smff.png"></img>
         <h2>Shiparoo</h2>

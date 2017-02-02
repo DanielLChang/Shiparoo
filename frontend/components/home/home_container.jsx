@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import Login from './login';
+import Home from './home';
 
 export default connect(
   null,
   null
-)(Login);
+)(Home);

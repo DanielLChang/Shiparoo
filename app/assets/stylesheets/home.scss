@@ -1,5 +1,4 @@
 body {
-  min-height: 670px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +9,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
+}
+
+@media (max-width: 1400px) {
+  .home-container {
+    flex-direction: column;
+  }
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+
   .tracking-number-container {
     display: flex;
     justify-content: center;
@@ -21,17 +34,20 @@ body {
     border-radius: 5px;
     background-color: #fcfcfc;
     margin-bottom: 30px;
+
     input {
       height: 45px;
       width: 250px;
       font-size: 15px;
       padding-left: 10px;
     }
+
     select {
       height: 51px;
       font-size: 15px;
     }
   }
+
   .phone-number-container {
     display: flex;
     flex-direction: column;
@@ -43,6 +59,7 @@ body {
     border-radius: 5px;
     background-color: #fcfcfc;
     margin-bottom: 30px;
+
     .phone-number-input {
       height: 45px;
       width: 250px;
@@ -51,6 +68,7 @@ body {
       margin-bottom: 15px;
     }
   }
+
   .package-form-submit {
     height: 45px;
     width: 500px;
@@ -58,4 +76,9 @@ body {
     box-shadow: 0 1px 2px rgba(0,0,0,.1);
     border-radius: 5px;
   }
+}
+
+.map {
+  height: 500px;
+  width: 800px;
 }
