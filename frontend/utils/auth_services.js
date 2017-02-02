@@ -49,11 +49,6 @@ export default class AuthService extends EventEmitter {
     return profile ? JSON.parse(profile) : {};
   }
 
-  logout() {
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
-  }
-
   setToken(idToken) {
     localStorage.setItem('id_token', idToken);
   }
@@ -64,5 +59,6 @@ export default class AuthService extends EventEmitter {
 
   logout() {
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
   }
 }
