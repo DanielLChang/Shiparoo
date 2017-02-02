@@ -19,6 +19,10 @@ class Header extends React.Component {
 
     return (
       <div className="header">
+        <Link to="home" className="logo">
+          <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1485839980/Logomakr_5f0q7A_z7smff.png"></img>
+          <h1>Shiparoo</h1>
+        </Link>
         { auth.loggedIn() ?
           <button onClick={this.logout.bind(this)}>Logout</button> :
           <Link to="login">Login</Link>
