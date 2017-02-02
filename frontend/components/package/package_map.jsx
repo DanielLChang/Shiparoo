@@ -17,9 +17,9 @@ class PackageMap extends React.Component {
     }
   }
 
-  componentWillUpdate() {
-    if (store.getState().package) {
-      let tracking_history = store.getState().package['9205590136271836203422'].tracking_history;
+  componentWillUpdate(nextProps) {
+    if (nextProps.package) {
+      let tracking_history = nextProps.package['9205590136271836203422'].tracking_history;
       this.routeCoordinates = [];
       for (let a = 0; a < tracking_history.length; a++) {
         if (tracking_history[a].location) {

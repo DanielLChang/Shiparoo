@@ -4,7 +4,9 @@ import { getPackage } from '../../actions/package_actions';
 import PackageShow from './package_show';
 
 const mapStateToProps = (state) => {
-  return;
+  return {
+    package: state.package
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -12,6 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(PackageShow);
