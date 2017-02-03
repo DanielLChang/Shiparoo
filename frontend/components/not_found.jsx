@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, browserHistory } from 'react-router';
 
 import Header from './header/header';
 
 class NotFound extends React.Component {
   constructor(props) {
     super(props);
+
+    this.redirectHome = this.redirectHome.bind(this);
+  }
+
+  redirectHome() {
+    browserHistory.push("/home");
   }
 
   render() {
@@ -15,10 +21,10 @@ class NotFound extends React.Component {
         <div className="not-found">
           <h1>Did you try to look for your package?</h1>
           <h2>It's not here &#128550;</h2>
-          <Link className="rdr-home" to="home">
+          <button className="rdr-home" onClick={this.redirectHome}>
             <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png"></img>
             <h2>Let us do it for you!</h2>
-          </Link>
+          </button>
         </div>
       </div>
     );

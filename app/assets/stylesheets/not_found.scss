@@ -50,19 +50,17 @@
     padding: 40px;
     background-color: rgba(154, 246, 255, 0.4);
     border-radius: 30px;
-
-    h2 {
-      font-family: $font-stack;
-      font-size: 200%;
-      letter-spacing: 2px;
-      margin-bottom: 0;
-    }
+    border: 0;
   }
 
-  .rdr-home:visited {
+  button.rdr-home {
     h2 {
-      color: white;
+      font-family: $font-stack;
+      margin-top: 25px;
+      margin-bottom: 0;
     }
+
+    font-size: 100%;
   }
 
   .rdr-home:hover {
