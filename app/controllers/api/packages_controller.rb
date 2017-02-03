@@ -30,10 +30,9 @@ class Api::PackagesController < ApplicationController
   end
 
   def create
-    @oackage = Package.find_by(package_params)
-    debugger
+    @package = Package.find_by(package_params)
     if @package
-      render json: { error: "Already tracking package!" }
+      render json: { package: @package }
     else
       @package = Package.new(package_params)
       @package.generate_pin
