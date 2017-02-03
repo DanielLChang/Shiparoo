@@ -94,29 +94,20 @@ class Package extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
-    this.startTracking();
+    // Testing modal css
+    document.getElementById('pin-modal').style.display = "block";
+
+    // this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
+    // this.startTracking();
   }
 
   renderErrors() {
     if (this.state.errorVisible) {
       return (
         <div className="package-errors">
-          <h4>Invalid tracking number or carrier</h4>
-        </div>
-      );
-    }
-    if (this.state.invalidPhone) {
-      return (
-        <div className="package-errors">
-          <h4>Invalid phone number</h4>
-        </div>
-      );
-    }
-    if (this.state.alreadyTracking) {
-      return (
-        <div className="package-errors">
-          <h4>Already tracking package!</h4>
+          { this.state.errorVisible ? <h4>Invalid tracking information or phone number</h4> : null }
+          { this.state.invalidPhone ? <h4>Invalid phone number</h4> : null }
+          { this.state.alreadyTracking ? <h4>Already tracking package!</h4> : null }
         </div>
       );
     }
@@ -126,51 +117,43 @@ class Package extends React.Component {
     return(
       <form className="form-container"
             onSubmit={ this.handleSubmit }>
-        <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1485839980/Logomakr_5f0q7A_z7smff.png"></img>
-        <h2>Shiparoo</h2>
-
-        <div className="tracking-number-container">
-          <input
-            type="text"
-            placeholder="Tracking Number"
-            onChange={ this.update("tracking_number") }>
-          </input>
-
-          <select onChange={ this.update("carrier") }>
-            <option value="ups">UPS</option>
-            <option value="usps">USPS</option>
-            <option value="fedex">FedEX</option>
-            <option value="canada_post">Canada Post</option>
-            <option value="lasership">Lasership</option>
-            <option value="dhl_express">DHL Express</option>
-            <option value="mondial_relay">Mondial Relay</option>
-          </select>
-        </div>
-
-        <div className="phone-number-container">
-          <input
-            className="phone-number-input"
-            type="text"
-            placeholder="Phone Number"
-            onChange={ this.update("phone_number")}>
-          </input>
-
-          <label className="package-updates">
+        <img className="logo-img"
+          src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png">
+        </img>
+        <h3 className="tagline">Never lose a package again!</h3>
+        <div className="input-container">
+          <div className="tracking-number-container">
             <input
-              type="checkbox"
-              onChange={ this.toggleUpdates("realtime_updates") }>
+              type="text"
+              className="tracking-number-input"
+              placeholder="Tracking Number"
+              onChange={ this.update("tracking_number") }>
             </input>
-            Check to receive SMS updates.
-          </label>
+
+            <select onChange={ this.update("carrier") }>
+              <option value="ups">UPS</option>
+              <option value="usps">USPS</option>
+              <option value="fedex">FedEX</option>
+              <option value="canada_post">Canada Post</option>
+              <option value="lasership">Lasership</option>
+              <option value="dhl_express">DHL Express</option>
+              <option value="mondial_relay">Mondial Relay</option>
+            </select>
+          </div>
+
+          <div className="phone-number-container">
+            <input
+              className="phone-number-input"
+              type="text"
+              placeholder="Phone Number"
+              onChange={ this.update("phone_number")}>
+            </input>
+          </div>
+          { this.renderErrors() }
+          <button className="package-form-submit"
+            type="submit">GENERATE PIN</button>
         </div>
-
-        { this.renderErrors() }
-
-        <button className="package-form-submit"
-          type="submit">Get PIN</button>
-
         <PinModal />
-
       </form>
     );
   }

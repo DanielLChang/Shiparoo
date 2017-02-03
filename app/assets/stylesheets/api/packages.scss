@@ -1,3 +1,23 @@
-// Place all the styles related to the api/packages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.package-show {
+  height: 100%;
+}
+
+.map {
+  height: 100%;
+  min-height: 530px;
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  border-radius: 10px;
+}
+
+@media (min-width: 600px) {
+  .map {
+    width: 70vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .map {
+    width: 50vw;
+  }
+}

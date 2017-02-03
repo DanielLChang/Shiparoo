@@ -11,15 +11,6 @@ class PinModal extends React.Component {
     this.handleModalSubmit = this.handleModalSubmit.bind(this);
   }
 
-  componentDidMount() {
-    const modal = document.getElementById("pin-modal");
-    const span = document.getElementsByClassName("close")[0];
-
-    span.onclick = () => {
-      modal.style.display = "none";
-    };
-  }
-
   update(field) {
     return (e) => this.setState({
       [field]: e.currentTarget.value
@@ -32,8 +23,13 @@ class PinModal extends React.Component {
 
   handleModalSubmit(e) {
     e.preventDefault();
-    debugger;
+    // debugger;
     this.startUpdate();
+  }
+
+  handleModalClose() {
+    const modal = document.getElementById("pin-modal");
+    modal.style.display = "none";
   }
 
   render() {
@@ -44,23 +40,26 @@ class PinModal extends React.Component {
         style={{display: 'none'}}>
         <div className="modal-content">
           <div className="modal-header">
-            <span className="close">X</span>
-            <h2>Verify Your Number To Start Tracking!</h2>
+            <h3>SMS PIN Verification</h3>
+            <i className="fa fa-times-circle close" onClick={this.handleModalClose}></i>
           </div>
-
-          <div className="modal-body">
+          <div className="pin-modal-instruct">1. Find your PIN in your messages</div>
+          <div className="pin-modal-details"></div>
+          <div className="pin-modal-instruct">2. Enter your PIN below</div>
+          <div className="pin-modal-form">
             <input
               className="pin-input"
               type="text"
-              placeholder="Enter PIN"
+              placeholder="Enter PIN to start tracking!"
               onChange={ this.update("pin")}>
             </input>
+
+            <button
+              className="modal-submit"
+              onClick={ this.handleModalSubmit }>
+              START TRACKING!
+            </button>
           </div>
-
-          <button className="modal-submit" onClick={ this.handleModalSubmit }>
-            Start Tracking!
-          </button>
-
         </div>
       </div>
     );

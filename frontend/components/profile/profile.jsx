@@ -2,10 +2,8 @@ import React from 'react';
 import { withRouter, Link, browserHistory } from 'react-router';
 
 import Header from '../header/header';
-import Package from '../package/package';
-import PackageShowContainer from '../package/package_show_container';
 
-class Home extends React.Component {
+class Profile extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,12 +13,11 @@ class Home extends React.Component {
       <div className="home-container">
         <Header auth={this.props.auth}/>
         <div className="main-container">
-          <Package />
-          <PackageShowContainer />
+
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(Home);
+export default withRouter(Profile);

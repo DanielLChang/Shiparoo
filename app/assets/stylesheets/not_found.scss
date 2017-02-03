@@ -1,0 +1,78 @@
+@import "variables";
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.not-found {
+  width: 70%;
+  height: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  h1 {
+    font-family: $text-font-stack;
+    font-size: 300%;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: $text-font-stack;
+    font-size: 250%;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: rgb(130, 224, 255);
+    margin-bottom: 30px;
+  }
+
+  .rdr-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    padding: 40px;
+    background-color: rgba(154, 246, 255, 0.4);
+    border-radius: 30px;
+    border: 0;
+  }
+
+  button.rdr-home {
+    h2 {
+      font-family: $font-stack;
+      margin-top: 25px;
+      margin-bottom: 0;
+    }
+
+    font-size: 100%;
+  }
+
+  .rdr-home:hover {
+    h2 {
+      color: $button-hover;
+    }
+    background-color: rgba(154, 246, 255, 0.6);
+  }
+
+  .rdr-home:active {
+    h2{
+      color: $button-press;
+    }
+  }
+}

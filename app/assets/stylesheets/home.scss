@@ -1,20 +1,181 @@
+@import "variables";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+html {
+  height: 100vh;
+}
+
 body {
+  height: auto;
+  min-height: 100% !important;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+}
+
+h1, h2, h3, input, select, button {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+input:focus, select:focus, button:focus {
+  outline: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+select, button {
+  cursor: pointer;
+}
+
+#root {
+  background: #2B3E4B;
+  background: -webkit-linear-gradient(to right, #2B3E4B , #588DA8);
+  background: linear-gradient(to right, #2B3E4B , #588DA8);
+}
+
+#root, .app-container, .home-container {
+  width: 100vw;
+  display: flex;
+  flex: 1;
+}
+
+.header {
+  width: 100vw;
+  height: 80px;
+
+  padding: 20px 30px;
+  box-sizing: border-box;
+  background-color: rgba(47, 165, 203, 0.3);
+  z-index: 5;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: $font-stack;
+  color: white;
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      height: 50px;
+      margin-right: 5px;
+    }
+  }
+
+  .header-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    img {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+    }
+  }
+
+  button.logo {
+    font-family: $font-stack;
+    font-size: 110%;
+    color: white;
+    background-color: rgba(0,0,0,0);
+    border: 0;
+  }
+
+  button.logo:visited {
+    color: white;
+  }
+
+  button.logo:active {
+    color: $button-press;
+  }
+
+  .user-btn, .sess-btn {
+    display: flex;
+    align-items: center;
+
+    border: 0;
+    background-color: rgba(0,0,0,0);
+    font-family: $font-stack;
+    color: white;
+    text-decoration: none;
+  }
+
+  .user-btn {
+    margin-right: 30px;
+
+    h3 {
+      font-size: 200%;
+    }
+  }
+
+  .sess-btn {
+    font-size: 130%;
+    background-color: rgb(46, 97, 119);
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  button.sess-btn:hover {
+    background-color: rgb(0, 121, 143);
+  }
+
+  button.sess-btn:active {
+    background-color: rgb(46, 97, 119);
+  }
+
+  button.user-btn:hover, button.sess-btn:hover {
+    color: $button-hover;
+  }
+
+  button.user-btn:active, button.sess-btn:active {
+    color: $button-press;
+  }
 }
 
 .home-container {
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
   flex-direction: row;
+  box-sizing: border-box;
+  padding: 60px 40px;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 1400px) {
-  .home-container {
+  #root, .app-container, .home-container {
+    height: auto;
+  }
+
+  .main-container {
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -24,61 +185,143 @@ body {
   align-items: center;
   flex-direction: column;
 
-  .tracking-number-container {
+  padding: 20px;
+  z-index: 5;
+
+  input:focus::-webkit-input-placeholder {
+    color: $input-focus-pl-color;
+  }
+
+  .logo-img {
+    margin-bottom: 30px;
+    height: 200px;
+  }
+
+  .tagline {
+    margin-bottom: 30px;
+    font-family: $font-stack;
+    color: rgb(154, 227, 236);
+    font-size: 160%;
+    letter-spacing: 2px;
+  }
+
+  @media(max-height: 800px) {
+    .logo-img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .input-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(41, 230, 255, 0.3);
+    border-radius: 5px;
+    padding: 50px;
+  }
+
+  .tracking-number-container, .phone-number-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
-    width: 500px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    border-radius: 5px;
-    background-color: #fcfcfc;
-    margin-bottom: 30px;
+    width: 30vw;
+    font-family: $text-font-stack;
+    margin-bottom: 40px;
+  }
 
-    input {
+  @media (max-width: 1400px) {
+    .tracking-number-container, .phone-number-container {
+      width: 50vw;
+    }
+  }
+
+  .tracking-number-container {
+    flex-direction: row;
+
+    .tracking-number-input {
       height: 45px;
-      width: 250px;
-      font-size: 15px;
+      width: 80%;
+      font-size: 80%;
       padding-left: 10px;
+      font-family: $text-font-stack;
+      border-radius: 5px 0 0 5px;
+      border: 0;
+    }
+
+    .tracking-number-input:focus {
+      background-color: rgb(191, 251, 255);
     }
 
     select {
-      height: 51px;
-      font-size: 15px;
+      border: 0;
+      height: 45px;
+      width: 20%;
+      font-size: 80%;
+      font-family: $text-font-stack;
+      border-radius: 0 5px 5px 0;
+      padding: 0 10px;
+      background-color: rgb(151, 223, 226);
     }
   }
 
   .phone-number-container {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    width: 500px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    border-radius: 5px;
-    background-color: #fcfcfc;
-    margin-bottom: 30px;
 
     .phone-number-input {
       height: 45px;
-      width: 250px;
-      font-size: 15px;
+      width: 100%;
+      font-size: 80%;
       padding-left: 10px;
-      margin-bottom: 15px;
+      font-family: $text-font-stack;
+      border-radius: 5px;
+      border: 0;
+      box-sizing: border-box;
+    }
+
+    .phone-number-input:focus {
+      background-color: $text-input-field-color;
     }
   }
 
   .package-form-submit {
     height: 45px;
-    width: 500px;
-    font-size: 15px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    width: 100%;
+
+    font-size: 110%;
+    font-weight: 400;
+    font-family: $text-font-stack;
+    letter-spacing: 1px;
+    color: white;
+
+    background-color: rgb(39, 219, 138);
+    border: 0;
     border-radius: 5px;
+  }
+
+  .package-form-submit:hover {
+    background-color: $button-hover;
+  }
+
+  .package-form-submit:active {
+    background-color: $button-press;
+  }
+
+  .package-errors {
+    width: 100%;
+    margin-bottom: 40px;
+    padding-left: 30px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgb(255, 156, 156);
+    font-family: $text-font-stack;
+    font-weight: 400;
   }
 }
 
-.map {
-  height: 500px;
-  width: 800px;
+@media (max-width: 1400px) {
+  .form-container {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
 }

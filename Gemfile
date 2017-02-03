@@ -13,6 +13,7 @@ gem 'figaro'
 gem 'knock'
 gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-auth0', '~> 1.4.2'
+gem 'font-awesome-sass', '~> 4.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
