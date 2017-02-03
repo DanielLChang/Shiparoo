@@ -95,10 +95,10 @@ class Package extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // Testing modal css
-    // document.getElementById('pin-modal').style.display = "block";
+    document.getElementById('pin-modal').style.display = "block";
 
-    this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
-    this.startTracking();
+    // this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
+    // this.startTracking();
   }
 
   renderErrors() {
