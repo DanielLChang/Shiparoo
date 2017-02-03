@@ -64,7 +64,8 @@ class Api::PackagesController < ApplicationController
       :realtime_updates,
       :pin,
       :user_id,
-      :carrier
+      :carrier,
+      :verified
     )
   end
 
