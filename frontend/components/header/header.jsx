@@ -44,8 +44,10 @@ class Header extends React.Component {
     if (auth.loggedIn()) {
       return (
         <div className="header-user">
-          <button className="menu-btn" onClick={this.redirectHome}>Track Package</button>
-          <button className="menu-btn" onClick={this.redirectPackages}>All Packages</button>
+          <div className="menu-links">
+            <button className="menu-btn" onClick={this.redirectHome}>Track Package</button>
+            <button className="menu-btn" onClick={this.redirectPackages}>All Packages</button>
+          </div>
           <button className="user-btn" onClick={this.redirectProfile}>
             <img src={profile.picture}></img>
             <h3>{profile.nickname}</h3>

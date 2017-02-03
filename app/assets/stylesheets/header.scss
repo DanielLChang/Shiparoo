@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex: 1;
 
     img {
       border-radius: 50%;
@@ -81,6 +82,7 @@
     font-family: $text-font-stack;
 
     h3 {
+      font-weight: 300;
       font-size: 200%;
     }
   }
@@ -107,4 +109,12 @@
   button.menu-btn:active, button.user-btn:active, button.sess-btn:active {
     color: $button-press;
   }
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+
+  margin-left: 10px;
 }
