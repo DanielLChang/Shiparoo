@@ -14,6 +14,8 @@ class PackageShow extends React.Component {
         <PackageMap
           getPackage={this.props.getPackage}
           package={this.props.package}
+          carrier={this.props.carrier}
+          trackingNumber={this.props.tracking_number}
           />
       </div>
     );
