@@ -94,15 +94,11 @@ body {
     text-decoration: none;
   }
 
-  a.sess-btn:visited {
-    color: white;
-  }
-
-  button.sess-btn:hover, a.sess-btn:hover {
+  button.sess-btn:hover {
     color: $button-hover;
   }
 
-  button.sess-btn:active, a.sess-btn:active {
+  button.sess-btn:active {
     color: $button-press;
   }
 }
