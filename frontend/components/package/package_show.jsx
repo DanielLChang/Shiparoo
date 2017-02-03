@@ -11,12 +11,10 @@ class PackageShow extends React.Component {
   render() {
     return(
       <div className="package-show">
-        <div className="package-map">
-          <PackageMap
-            getPackage={this.props.getPackage}
-            package={this.props.package}
-            />
-        </div>
+        <PackageMap
+          getPackage={this.props.getPackage}
+          package={this.props.package}
+          />
       </div>
     );
   }
