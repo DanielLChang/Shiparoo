@@ -3,8 +3,20 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;
   width: 100vw;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  height: auto;
+  min-height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 h1, h2, h3, input, select, button {
@@ -25,13 +37,6 @@ select, button {
   cursor: pointer;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 #root {
   background: #2B3E4B;
   background: -webkit-linear-gradient(to right, #2B3E4B , #588DA8);
@@ -40,12 +45,13 @@ body {
 
 #root, .app-container, .home-container {
   width: 100vw;
-  height: 100vh;
+  display: flex;
+  flex: 1;
 }
 
 .header {
   width: 100vw;
-  height: 8vh;
+  height: 80px;
 
   padding: 20px 30px;
   box-sizing: border-box;
@@ -107,7 +113,6 @@ body {
 }
 
 .home-container {
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
