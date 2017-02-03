@@ -17,6 +17,10 @@ input:focus, select:focus, button:focus {
   outline: none;
 }
 
+select, button {
+  cursor: pointer;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -108,7 +112,7 @@ body {
   z-index: 5;
 
   input:focus::-webkit-input-placeholder {
-    color: rgb(255, 177, 73);
+    color: $input-focus-pl-color;
   }
 
   .logo-img {
@@ -186,7 +190,7 @@ body {
     }
 
     .phone-number-input:focus {
-      background-color: rgb(191, 251, 255);
+      background-color: $text-input-field-color;
     }
   }
 
@@ -203,6 +207,14 @@ body {
     background-color: rgb(39, 219, 138);
     border: 0;
     border-radius: 5px;
+  }
+
+  .package-form-submit:hover {
+    background-color: $button-hover;
+  }
+
+  .package-form-submit:active {
+    background-color: $button-press;
   }
 
   .package-errors {

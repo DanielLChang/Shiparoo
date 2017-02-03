@@ -44,17 +44,24 @@ class PinModal extends React.Component {
             <i className="fa fa-times-circle close" onClick={this.handleModalClose}></i>
           </div>
 
-          <input
-            className="pin-input"
-            type="text"
-            placeholder="Enter PIN to start tracking!"
-            onChange={ this.update("pin")}>
-          </input>
+          <div className="pin-modal-details">
+            <h2>To be filled with instructions or propaganda...</h2>
+          </div>
 
-          <button className="modal-submit" onClick={ this.handleModalSubmit }>
-            Start Tracking!
-          </button>
+          <div className="pin-modal-form">
+            <input
+              className="pin-input"
+              type="text"
+              placeholder="Enter PIN to start tracking!"
+              onChange={ this.update("pin")}>
+            </input>
 
+            <button
+              className="modal-submit"
+              onClick={ this.handleModalSubmit }>
+              START TRACKING!
+            </button>
+          </div>
         </div>
       </div>
     );
