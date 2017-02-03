@@ -43,11 +43,10 @@ class PinModal extends React.Component {
             <h3>SMS PIN Verification</h3>
             <i className="fa fa-times-circle close" onClick={this.handleModalClose}></i>
           </div>
+          <div className="pin-modal-instruct">1. Find your PIN in your messages</div>
+          <div className="pin-modal-details"></div>
 
-          <div className="pin-modal-details">
-            <h2>To be filled with instructions or propaganda...</h2>
-          </div>
-
+          <div className="pin-modal-instruct">2. Enter your PIN below</div>
           <div className="pin-modal-form">
             <input
               className="pin-input"
