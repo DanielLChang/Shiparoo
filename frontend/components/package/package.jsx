@@ -1,6 +1,7 @@
 import React from 'react';
 import merge from 'lodash/merge';
 import PinModal from './pin_modal';
+import PackageShowContainer from './package_show_container';
 
 class Package extends React.Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class Package extends React.Component {
       realtime_updates: false,
       invalidPhone: false,
       errorVisible: false,
-      alreadyTracking: false
+      alreadyTracking: false,
+      showMapRoute: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,6 +25,7 @@ class Package extends React.Component {
     this.handleValidTracking = this.handleValidTracking.bind(this);
     this.validPhoneNumber = this.validPhoneNumber.bind(this);
     this.createPackage = this.createPackage.bind(this);
+    this.renderMap = this.renderMap.bind(this);
   }
 
   toggleUpdates(field) {
@@ -99,6 +102,16 @@ class Package extends React.Component {
 
     // this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
     // this.startTracking();
+    this.setState({ showMapRoute: true});
+
+  }
+
+  renderMap() {
+    if (this.state.showMapRoute === true) {
+      return (<PackageShowContainer carrier={this.state.carrier} trackingNumber={this.state.tracking_number} />);
+    } else {
+      return (<div></div>);
+    }
   }
 
   renderErrors() {
@@ -115,46 +128,49 @@ class Package extends React.Component {
 
   render() {
     return(
-      <form className="form-container"
-            onSubmit={ this.handleSubmit }>
-        <img className="logo-img"
-          src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png">
-        </img>
-        <h3 className="tagline">Never lose a package again!</h3>
-        <div className="input-container">
-          <div className="tracking-number-container">
-            <input
-              type="text"
-              className="tracking-number-input"
-              placeholder="Tracking Number"
-              onChange={ this.update("tracking_number") }>
-            </input>
+      <div>
+        <form className="form-container"
+          onSubmit={ this.handleSubmit }>
+          <img className="logo-img"
+            src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png">
+          </img>
+          <h3 className="tagline">Never lose a package again!</h3>
+          <div className="input-container">
+            <div className="tracking-number-container">
+              <input
+                type="text"
+                className="tracking-number-input"
+                placeholder="Tracking Number"
+                onChange={ this.update("tracking_number") }>
+              </input>
 
-            <select onChange={ this.update("carrier") }>
-              <option value="ups">UPS</option>
-              <option value="usps">USPS</option>
-              <option value="fedex">FedEX</option>
-              <option value="canada_post">Canada Post</option>
-              <option value="lasership">Lasership</option>
-              <option value="dhl_express">DHL Express</option>
-              <option value="mondial_relay">Mondial Relay</option>
-            </select>
-          </div>
+              <select onChange={ this.update("carrier") }>
+                <option value="ups">UPS</option>
+                <option value="usps">USPS</option>
+                <option value="fedex">FedEX</option>
+                <option value="canada_post">Canada Post</option>
+                <option value="lasership">Lasership</option>
+                <option value="dhl_express">DHL Express</option>
+                <option value="mondial_relay">Mondial Relay</option>
+              </select>
+            </div>
 
-          <div className="phone-number-container">
-            <input
-              className="phone-number-input"
-              type="text"
-              placeholder="Phone Number"
-              onChange={ this.update("phone_number")}>
-            </input>
+            <div className="phone-number-container">
+              <input
+                className="phone-number-input"
+                type="text"
+                placeholder="Phone Number"
+                onChange={ this.update("phone_number")}>
+              </input>
+            </div>
+            { this.renderErrors() }
+            <button className="package-form-submit"
+              type="submit">GENERATE PIN</button>
           </div>
-          { this.renderErrors() }
-          <button className="package-form-submit"
-            type="submit">GENERATE PIN</button>
-        </div>
-        <PinModal />
-      </form>
+          <PinModal />
+        </form>
+        {this.renderMap()}
+      </div>
     );
   }
 }

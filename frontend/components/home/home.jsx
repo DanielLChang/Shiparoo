@@ -16,7 +16,6 @@ class Home extends React.Component {
         <Header auth={this.props.auth}/>
         <div className="main-container">
           <Package />
-          <PackageShowContainer />
         </div>
       </div>
     );
