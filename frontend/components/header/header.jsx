@@ -24,8 +24,8 @@ class Header extends React.Component {
           <h1>Shiparoo</h1>
         </Link>
         { auth.loggedIn() ?
-          <button onClick={this.logout.bind(this)}>Logout</button> :
-          <Link to="login">Login</Link>
+          <button className="sess-btn" onClick={this.logout.bind(this)}>Logout</button> :
+          <Link className="sess-btn" to="login">Login</Link>
         }
       </div>
     );

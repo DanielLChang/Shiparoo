@@ -17,6 +17,10 @@ input:focus, select:focus, button:focus {
   outline: none;
 }
 
+a:visited {
+  text-decoration: none;
+}
+
 select, button {
   cursor: pointer;
 }
@@ -78,6 +82,27 @@ body {
   }
 
   .logo:active {
+    color: $button-press;
+  }
+
+  .sess-btn {
+    border: 0;
+    background-color: rgba(0,0,0,0);
+    font-family: $font-stack;
+    font-size: 150%;
+    color: white;
+    text-decoration: none;
+  }
+
+  a.sess-btn:visited {
+    color: white;
+  }
+
+  button.sess-btn:hover, a.sess-btn:hover {
+    color: $button-hover;
+  }
+
+  button.sess-btn:active, a.sess-btn:active {
     color: $button-press;
   }
 }
