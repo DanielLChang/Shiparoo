@@ -61,6 +61,7 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    text-decoration: none;
 
     img {
       height: 50px;
@@ -70,6 +71,14 @@ body {
     h1 {
       font-size: 180%;
     }
+  }
+
+  .logo:visited {
+    color: white;
+  }
+
+  .logo:active {
+    color: $button-press;
   }
 }
 
