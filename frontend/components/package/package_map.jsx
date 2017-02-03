@@ -5,7 +5,7 @@ import range from 'lodash/range';
 
 let _mapOptions = {
   center: {lat: 37.773972, lng: -122.431297}, // San Francisco coords
-  zoom: 10
+  zoom: 11
 };
 
 class PackageMap extends React.Component {
@@ -13,6 +13,8 @@ class PackageMap extends React.Component {
     super(props);
 
     this.drawMarkers = this.drawMarkers.bind(this);
+    this.getAddress = this.getAddress.bind(this);
+    this.getGeocode = this.getGeocode.bind(this);
   }
 
   componentDidMount() {
@@ -26,22 +28,20 @@ class PackageMap extends React.Component {
   componentWillUpdate(nextProps) {
     if (nextProps.package) {
       let tracking_history = nextProps.package[this.props.trackingNumber].tracking_history;
-      debugger;
       this.routeCoordinates = [];
-      for (let a = 0; a < tracking_history.length; a++) {
-        if (tracking_history[a].location) {
-          // this.getAddress(tracking_history[a].location)
-          if (tracking_history[a].location.zip) {
-            $.ajax({
-              url: `https://maps.googleapis.com/maps/api/geocode/json?address=${tracking_history[a].location.zip}`,
-              method: 'GET',
-              success: (response) => {
-                console.log(response.results[0].address_components[0].long_name);
-                let coords = response.results[0].geometry.location;
-                this.routeCoordinates[a] = {lat: coords.lat, lng: coords.lng};
-                console.log(this.routeCoordinates);
-              }
-            });
+      let seen_addresses = {};
+      for (let index = 0; index < tracking_history.length; index++) {
+        let dest = tracking_history[index];
+        if (dest.status !== "TRANSIT" && dest.status !== "DELIVERED") {
+          continue;
+        }
+        if (dest.location) {
+          let curr_address = this.getAddress(dest.location);
+          if (seen_addresses[curr_address]) {
+            continue;
+          } else {
+            seen_addresses[curr_address] = true;
+            this.getGeocode(curr_address, index);
           }
         }
       }
@@ -54,11 +54,30 @@ class PackageMap extends React.Component {
          return element !== undefined;
       });
       this.drawMarkers();
+      this.map.setCenter(this.routeCoordinates[this.routeCoordinates.length - 1]);
+    });
+  }
+
+  getGeocode(address, index) {
+    $.ajax({
+      url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
+      method: 'GET',
+      success: (response) => {
+        let coords = response.results[0].geometry.location;
+        this.routeCoordinates[index] = {lat: coords.lat, lng: coords.lng};
+      }
     });
   }
 
   getAddress(location) {
-
+    let address_str = "";
+    let keys = Object.keys(location);
+    for (let index in keys) {
+      address_str += location[keys[index]];
+      if (keys[index] === "city") address_str += ",";
+      if (keys[index] !== "country" && keys[index] !== "") address_str += " ";
+    }
+    return address_str;
   }
 
   drawMarkers() {

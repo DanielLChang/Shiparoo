@@ -3,9 +3,11 @@ import { getPackage } from '../../actions/package_actions';
 
 import PackageShow from './package_show';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    package: state.package
+    package: state.package,
+    carrier: ownProps.carrier,
+    tracking_number: ownProps.trackingNumber
   };
 };
 
