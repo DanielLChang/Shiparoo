@@ -9,21 +9,28 @@ let _mapOptions = {
 };
 
 class PackageMap extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.drawMarkers = this.drawMarkers.bind(this);
+  }
 
   componentDidMount() {
     const map = this.refs.map;
     this.map = new google.maps.Map(map, _mapOptions);
     if (this.props) {
-      this.props.getPackage('usps', '9205590136271836203422');
+      this.props.getPackage(this.props.carrier, this.props.trackingNumber);
     }
   }
 
   componentWillUpdate(nextProps) {
     if (nextProps.package) {
-      let tracking_history = nextProps.package['9205590136271836203422'].tracking_history;
+      let tracking_history = nextProps.package[this.props.trackingNumber].tracking_history;
+      debugger;
       this.routeCoordinates = [];
       for (let a = 0; a < tracking_history.length; a++) {
         if (tracking_history[a].location) {
+          // this.getAddress(tracking_history[a].location)
           if (tracking_history[a].location.zip) {
             $.ajax({
               url: `https://maps.googleapis.com/maps/api/geocode/json?address=${tracking_history[a].location.zip}`,
@@ -46,26 +53,34 @@ class PackageMap extends React.Component {
       this.routeCoordinates = this.routeCoordinates.filter((element) => {
          return element !== undefined;
       });
-      let route = new google.maps.Polyline({
-        path: this.routeCoordinates,
-        geodesic: true,
-        strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-      });
-      route.setMap(this.map);
-
-      let marker;
-      for (let a = 0; a < this.routeCoordinates.length; a++) {
-        let position = this.routeCoordinates[a];
-        marker = new google.maps.Marker({
-          position: position,
-          map: this.map,
-          draggable: true,
-          animation: google.maps.Animation.DROP
-        });
-      }
+      this.drawMarkers();
     });
+  }
+
+  getAddress(location) {
+
+  }
+
+  drawMarkers() {
+    let route = new google.maps.Polyline({
+      path: this.routeCoordinates,
+      geodesic: true,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+    route.setMap(this.map);
+
+    let marker;
+    for (let a = 0; a < this.routeCoordinates.length; a++) {
+      let position = this.routeCoordinates[a];
+      marker = new google.maps.Marker({
+        position: position,
+        map: this.map,
+        draggable: false,
+        animation: google.maps.Animation.DROP
+      });
+    }
   }
 
   render() {
