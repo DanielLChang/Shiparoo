@@ -38,7 +38,7 @@ class Api::PackagesController < ApplicationController
       @package.generate_pin
       @package.send_pin
 
-      render json: { package_id: @package.id }
+      render json: { package: @package }
     end
   end
 
@@ -50,7 +50,7 @@ class Api::PackagesController < ApplicationController
 
       render json: { tracking: shippo_status }
     else
-      render json: { error: "Unable to find package" }
+      render json: { error: "Wrong PIN" }
     end
 
   end
