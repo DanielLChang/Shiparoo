@@ -94,8 +94,9 @@ class Package extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
-    this.startTracking();
+    document.getElementById('pin-modal').style.display = "block";
+    // this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
+    // this.startTracking();
   }
 
   renderErrors() {

@@ -11,15 +11,6 @@ class PinModal extends React.Component {
     this.handleModalSubmit = this.handleModalSubmit.bind(this);
   }
 
-  componentDidMount() {
-    const modal = document.getElementById("pin-modal");
-    const span = document.getElementsByClassName("close")[0];
-
-    span.onclick = () => {
-      modal.style.display = "none";
-    };
-  }
-
   update(field) {
     return (e) => this.setState({
       [field]: e.currentTarget.value
@@ -32,8 +23,13 @@ class PinModal extends React.Component {
 
   handleModalSubmit(e) {
     e.preventDefault();
-    debugger;
+    // debugger;
     this.startUpdate();
+  }
+
+  handleModalClose() {
+    const modal = document.getElementById("pin-modal");
+    modal.style.display = "none";
   }
 
   render() {
@@ -44,8 +40,8 @@ class PinModal extends React.Component {
         style={{display: 'none'}}>
         <div className="modal-content">
           <div className="modal-header">
-            <span className="close">X</span>
-            <h2>Verify Your Number To Start Tracking!</h2>
+            <h3>SMS PIN Verification</h3>
+            <i className="fa fa-times-circle close" onClick={this.handleModalClose}></i>
           </div>
 
           <input
