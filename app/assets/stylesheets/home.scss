@@ -138,7 +138,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-right: 60px;
+
+  margin-right: 40px;
+  padding: 20px;
   z-index: 5;
 
   input:focus::-webkit-input-placeholder {
