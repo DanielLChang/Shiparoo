@@ -5,3 +5,9 @@
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   border-radius: 10px;
 }
+
+@media(max-width: 1400px) {
+  .map {
+    width: 70vw;
+  }
+}
