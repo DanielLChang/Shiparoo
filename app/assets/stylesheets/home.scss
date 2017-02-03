@@ -106,6 +106,10 @@ body {
   margin-right: 60px;
   z-index: 5;
 
+  input:focus::-webkit-input-placeholder {
+    color: rgb(255, 177, 73);
+  }
+
   .logo-img {
     margin-bottom: 30px;
     height: 200px;
@@ -202,7 +206,7 @@ body {
   .package-errors {
     width: 100%;
     margin-bottom: 40px;
-    padding-left: 10px;
+    padding-left: 30px;
     border-radius: 5px;
     box-sizing: border-box;
     background-color: rgb(255, 156, 156);
