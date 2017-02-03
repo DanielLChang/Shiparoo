@@ -78,6 +78,19 @@ select, button {
     }
   }
 
+  .header-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    img {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+    }
+  }
+
   button.logo {
     font-family: $font-stack;
     font-size: 110%;
@@ -94,20 +107,45 @@ select, button {
     color: $button-press;
   }
 
-  .sess-btn {
+  .user-btn, .sess-btn {
+    display: flex;
+    align-items: center;
+
     border: 0;
     background-color: rgba(0,0,0,0);
     font-family: $font-stack;
-    font-size: 150%;
     color: white;
     text-decoration: none;
   }
 
+  .user-btn {
+    margin-right: 30px;
+
+    h3 {
+      font-size: 200%;
+    }
+  }
+
+  .sess-btn {
+    font-size: 130%;
+    background-color: rgb(46, 97, 119);
+    border-radius: 5px;
+    padding: 10px;
+  }
+
   button.sess-btn:hover {
-    color: $button-hover;
+    background-color: rgb(0, 121, 143);
   }
 
   button.sess-btn:active {
+    background-color: rgb(46, 97, 119);
+  }
+
+  button.user-btn:hover, button.sess-btn:hover {
+    color: $button-hover;
+  }
+
+  button.user-btn:active, button.sess-btn:active {
     color: $button-press;
   }
 }
