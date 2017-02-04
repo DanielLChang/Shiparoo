@@ -4,6 +4,7 @@ import { withRouter, Link, browserHistory } from 'react-router';
 import Header from '../header/header';
 import Package from '../package/package';
 import PackageShowContainer from '../package/package_show_container';
+import ProfileModal from '../profile/profile_modal';
 
 class Home extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Home extends React.Component {
       <div className="home-container">
         <Header auth={this.props.auth}/>
         <div className="main-container">
+          <ProfileModal />
           <Package />
           <PackageShowContainer />
         </div>

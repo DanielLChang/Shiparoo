@@ -26,7 +26,8 @@ class Header extends React.Component {
   }
 
   redirectProfile() {
-    browserHistory.push("/profile");
+    document.getElementById('profile-modal').style.display = "block";
+    // browserHistory.push("/profile");
   }
 
   redirectHome() {
