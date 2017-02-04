@@ -13,7 +13,8 @@ class Package extends React.Component {
       realtime_updates: false,
       invalidPhone: false,
       errorVisible: false,
-      alreadyTracking: false
+      alreadyTracking: false,
+      processing: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -113,6 +114,36 @@ class Package extends React.Component {
     }
   }
 
+  disableButton() {
+    if (this.state.processing) {
+      return true;
+    } else if (this.state.carrier === "") {
+      return true;
+    } else if (this.state.tracking_number === "") {
+      return true;
+    } else if (this.state.phone_number === "") {
+      return false;
+    } else {
+      return !this.validPhoneNumber(this.state.phone_number);
+    }
+  }
+
+  buttonText() {
+    if (this.state.processing) {
+      return "Processing Request";
+    } else {
+      return this.trackButtonText();
+    }
+  }
+
+  trackButtonText() {
+    if (this.state.phone_number === "") {
+      return "Find Package";
+    } else {
+      return "Receive Updates";
+    }
+  }
+
   render() {
     return(
       <form className="form-container"
@@ -151,7 +182,8 @@ class Package extends React.Component {
           </div>
           { this.renderErrors() }
           <button className="package-form-submit"
-            type="submit">GENERATE PIN</button>
+            disabled={this.disableButton()}
+            type="submit">{this.buttonText()}</button>
         </div>
         <PinModal />
       </form>
