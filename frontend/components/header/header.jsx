@@ -59,6 +59,7 @@ class Header extends React.Component {
     } else {
       return (
         <div className="header-user">
+          <div className="menu-links"></div>
           <button className="sess-btn" onClick={auth.login.bind(this)}>Login</button>
         </div>
       );
