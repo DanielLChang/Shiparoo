@@ -1,11 +1,9 @@
-// Not used...
-
 import React from 'react';
 import { withRouter, Link, browserHistory } from 'react-router';
 
 import Header from '../header/header';
 
-class Profile extends React.Component {
+class ProfileModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -32,21 +30,28 @@ class Profile extends React.Component {
     return month + "/" + day + "/" + year;
   }
 
+  handleModalClose() {
+    const modal = document.getElementById("profile-modal");
+    modal.style.display = "none";
+  }
+
   render() {
     const { profile } = this.state;
 
     return (
-      <div className="home-container">
-        <Header auth={this.props.auth}/>
-        <div className="main-container profile-page">
-          <div className="user-profile">
-            { this.pictureCheck() }
-            <div className="profile-text">
-              <p><strong>Name:</strong> {profile.name}</p>
-              <p><strong>Email:</strong> {profile.email ? profile.email : "No email provided"}</p>
-              <p><strong>Nickname:</strong> {profile.nickname}</p>
-              <p><strong>Member since:</strong> {this.getCreateDate()}</p>
-            </div>
+      <div id="profile-modal"
+        className="profile-modal"
+        style={{display: 'none'}}>
+        <div className="profile-modal-content">
+          <div className="pm-header">
+            <i className="fa fa-times-circle close" onClick={this.handleModalClose}></i>
+          </div>
+          { this.pictureCheck() }
+          <div className="profile-text">
+            <p><strong>Name:</strong> {profile.name}</p>
+            <p><strong>Email:</strong> {profile.email ? profile.email : "No email provided"}</p>
+            <p><strong>Nickname:</strong> {profile.nickname}</p>
+            <p><strong>Member since:</strong> {this.getCreateDate()}</p>
           </div>
         </div>
       </div>
@@ -54,4 +59,4 @@ class Profile extends React.Component {
   }
 }
 
-export default withRouter(Profile);
+export default ProfileModal;

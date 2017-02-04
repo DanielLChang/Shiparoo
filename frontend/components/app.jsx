@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
+import ProfileModal from './profile/profile_modal';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,7 @@ class App extends React.Component {
 
     return (
       <div className="app-container">
+        { this.props.route.auth.loggedIn() ? <ProfileModal /> : null }
         { children }
       </div>
     );
