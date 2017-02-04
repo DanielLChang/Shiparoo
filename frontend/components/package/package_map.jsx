@@ -26,7 +26,11 @@ class PackageMap extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
-    if (nextProps.package) {
+    if (nextProps.carrier != this.props.carrier || nextProps.trackingNumber != this.props.trackingNumber) {
+      nextProps.getPackage(nextProps.carrier, nextProps.trackingNumber);
+    }
+
+    if (nextProps.package && nextProps.package[this.props.trackingNumber]) {
       let tracking_history = nextProps.package[this.props.trackingNumber].tracking_history;
       this.routeCoordinates = [];
       let seen_addresses = {};
@@ -60,7 +64,7 @@ class PackageMap extends React.Component {
 
   getGeocode(address, index) {
     $.ajax({
-      url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
+      url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCBasOCP_OzvUC6i0ct92QQ-midDnDqE0U`,
       method: 'GET',
       success: (response) => {
         let coords = response.results[0].geometry.location;
@@ -75,7 +79,7 @@ class PackageMap extends React.Component {
     for (let index in keys) {
       address_str += location[keys[index]];
       if (keys[index] === "city") address_str += ",";
-      if (keys[index] !== "country" && keys[index] !== "") address_str += " ";
+      if (keys[index] !== "country" && location[keys[index]] !== "") address_str += " ";
     }
     return address_str;
   }
