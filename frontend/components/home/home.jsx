@@ -16,7 +16,6 @@ class Home extends React.Component {
       <div className="home-container">
         <Header auth={this.props.auth}/>
         <div className="main-container">
-          { this.props.auth.loggedIn() ? <ProfileModal /> : null }
           <Package />
           <PackageShowContainer />
         </div>
