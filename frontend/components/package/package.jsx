@@ -128,7 +128,7 @@ class Package extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="main-container">
         <form className="form-container"
           onSubmit={ this.handleSubmit }>
           <img className="logo-img"
