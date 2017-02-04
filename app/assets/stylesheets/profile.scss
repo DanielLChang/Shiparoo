@@ -1,0 +1,43 @@
+@import 'variables';
+
+.main-container.profile-page {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+@media (max-width: 1400px) {
+  .main-container.profile-page {
+    flex-direction: row;
+    align-items: flex-start;
+    height: 100%;
+  }
+}
+
+.user-profile {
+  height: 100%;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+  }
+
+  p {
+    margin: 0;
+    font-family: $text-font-stack;
+  }
+
+  .profile-text {
+    padding: 30px;
+    background-color: $normal-blue;
+    border-radius: 15px;
+  }
+}

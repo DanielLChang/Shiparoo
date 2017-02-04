@@ -14,12 +14,15 @@ class Header extends React.Component {
     });
 
     this.redirectHome = this.redirectHome.bind(this);
+    this.redirectProfile = this.redirectProfile.bind(this);
+    this.redirectPackages = this.redirectPackages.bind(this);
     this.logout = this.logout.bind(this);
   }
 
   logout() {
     this.props.auth.logout();
     this.setState({ loggedIn: false, profile: null });
+    this.redirectHome();
   }
 
   redirectProfile() {
@@ -30,6 +33,10 @@ class Header extends React.Component {
     browserHistory.push("/home");
   }
 
+  redirectPackages() {
+    browserHistory.push("/packages");
+  }
+
   headerUser() {
     const { auth } = this.props;
     const { profile } = this.state;
@@ -37,6 +44,10 @@ class Header extends React.Component {
     if (auth.loggedIn()) {
       return (
         <div className="header-user">
+          <div className="menu-links">
+            <button className="menu-btn" onClick={this.redirectHome}>Track Package</button>
+            <button className="menu-btn" onClick={this.redirectPackages}>All Packages</button>
+          </div>
           <button className="user-btn" onClick={this.redirectProfile}>
             <img src={profile.picture}></img>
             <h3>{profile.nickname}</h3>
