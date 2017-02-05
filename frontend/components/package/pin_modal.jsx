@@ -52,7 +52,9 @@ class PinModal extends React.Component {
   handleModalSubmit(e) {
     e.preventDefault();
     this.setState({ errorVisible: false, processing: true });
-    this.checkPin();
+    setInterval(() => {
+      this.checkPin();
+    }, 1000);
   }
 
   handleModalClose() {
@@ -63,7 +65,7 @@ class PinModal extends React.Component {
   renderErrors() {
     if (this.state.errorVisible) {
       return (
-        <div className="package-errors">
+        <div className="pin-errors">
           Invalid PIN
         </div>
       );
@@ -109,7 +111,6 @@ class PinModal extends React.Component {
               onChange={ this.update("pinToVerify")}>
             </input>
 
-            {this.renderErrors()}
 
             <button
               className="modal-submit"
@@ -117,6 +118,7 @@ class PinModal extends React.Component {
               onClick={ this.handleModalSubmit }>
               { this.buttonText() }
             </button>
+            {this.renderErrors()}
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@
 
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  background-color: #fefefe;
+  // background-color: #fefefe;
 }
 
 @media (max-width: 1400px) {
@@ -45,11 +45,11 @@
   padding: 15px 20px;
 
   border-radius: 10px 10px 0 0;
-  background-color: rgb(39, 219, 138);
+  background-color: $stormy;
 
   h3 {
     font-size: 150%;
-    font-family: $text-font-stack;
+    font-family: sans-serif;;
     font-weight: 500;
     letter-spacing: 1px;
     color: white;
@@ -69,8 +69,8 @@
 }
 
 .pin-modal-instruct {
-  background-color: rgb(40, 81, 92);
-  font-family: $text-font-stack;
+  background-color: $slate-gray;
+  font-family: sans-serif;
   padding: 20px;
   color: white;
 }
@@ -80,7 +80,7 @@
   flex-direction: row;
   flex: 1;
   padding: 40px;
-  font-family: $text-font-stack;
+  font-family: sans-serif;;
   background-image: url('web-modal-instructions-small.svg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -103,12 +103,12 @@
   align-items: center;
 
   box-sizing: border-box;
-  background-color: rgb(57, 124, 142);
+  background-color: $stormy;
   border-radius: 0 0 5px 5px;
 
   .pin-input, .modal-submit {
     width: 90%;
-    height: 50px;
+    height: 45px;
 
     border: none;
     border-radius: 5px;
@@ -118,35 +118,36 @@
   .pin-input {
     padding-left: 20px;
     margin-bottom: 20px;
-
-    font-size: 100%;
+    font-size: 95%;
     box-sizing: border-box;
-    font-family: $text-font-stack;
+    font-family: sans-serif;
+    color: $slate-gray;
   }
 
-  .pin-input:focus {
-    background-color: $text-input-field-color;
-  }
+  // .pin-input:focus {
+  //   background-color: $text-input-field-color;
+  // }
 
   .modal-submit {
-    font-size: 140%;
+    font-size: 95%;
     font-weight: 400;
-    font-family: $text-font-stack;
-    letter-spacing: 2px;
+    font-family: sans-serif;;
+    letter-spacing: 1px;
     color: white;
 
-    background-color: rgb(39, 219, 138);
+    background-color: $light-gold;
   }
 
   .modal-submit:hover {
-    background-color: $button-hover;
+    background-color: $dark-gold;
   }
 
-  .modal-submit:active {
-    background-color: $button-press;
-  }
+  // .modal-submit:active {
+  //   background-color: $button-press;
+  // }
 
   .modal-submit:disabled {
-    background-color: gray;
+    background-color: transparent;
+    border: 1px solid $light-gray;
   }
 }
