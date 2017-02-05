@@ -182,7 +182,7 @@ class Package extends React.Component {
         <img className="logo-img"
           src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png">
         </img>
-        <h3 className="tagline">Never lose a package again!</h3>
+        <h3 className="tagline">Never lose track of a package again.</h3>
         <div className="input-container">
           <div className="tracking-number-container">
             <input
@@ -219,7 +219,9 @@ class Package extends React.Component {
             type="submit">{this.buttonText()}</button>
         </div>
         <PinModal package={this.state.package}/>
+
         {this.renderMap()}
+
       </form>
     );
   }

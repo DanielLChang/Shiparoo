@@ -41,6 +41,9 @@ select, button {
   background: rgb(19,32,66);
   background: -webkit-linear-gradient(to right, rgb(19,32,66) , #65A3C3);
   background: linear-gradient(to right, rgb(19,32,66) , #65A3C3);
+  background-image: url('https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486266364/splash_dutkf1.jpg');
+  background-size: cover;
+
 }
 
 #root, .app-container, .home-container {
@@ -88,7 +91,7 @@ select, button {
   z-index: 5;
 
   input:focus::-webkit-input-placeholder {
-    color: $input-focus-pl-color;
+    // color: $input-focus-pl-color;
   }
 
   .logo-img {
@@ -99,9 +102,8 @@ select, button {
   .tagline {
     margin-bottom: 30px;
     font-family: $font-stack;
-    color: rgb(154, 227, 236);
-    font-size: 160%;
-    letter-spacing: 2px;
+    color: white;
+    font-size: 140%;
   }
 
   @media(max-height: 800px) {
@@ -115,7 +117,7 @@ select, button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(41, 230, 255, 0.3);
+    // background-color: rgba(41, 230, 255, 0.3);
     border-radius: 5px;
     padding: 50px;
   }
@@ -140,27 +142,32 @@ select, button {
 
     .tracking-number-input {
       height: 45px;
-      width: 80%;
-      font-size: 80%;
+      width: 60%;
+      font-size: 95%;
       padding-left: 10px;
       font-family: $text-font-stack;
       border-radius: 5px 0 0 5px;
       border: 0;
+      color: $slate-gray;
     }
 
     .tracking-number-input:focus {
-      background-color: rgb(191, 251, 255);
+      // background-color: rgb(191, 251, 255);
     }
 
     select {
       border: 0;
       height: 45px;
-      width: 20%;
+      width: 18%;
       font-size: 80%;
       font-family: $text-font-stack;
       border-radius: 0 5px 5px 0;
       padding: 0 10px;
-      background-color: rgb(151, 223, 226);
+      background-color: $light-gold;
+      color: white;
+    }
+    select:hover {
+      background-color: $dark-gold;
     }
   }
 
@@ -169,45 +176,47 @@ select, button {
 
     .phone-number-input {
       height: 45px;
-      width: 100%;
-      font-size: 80%;
+      width: 80%;
+      font-size: 95%;
       padding-left: 10px;
       font-family: $text-font-stack;
       border-radius: 5px;
       border: 0;
       box-sizing: border-box;
+      color: $slate-gray;
     }
 
     .phone-number-input:focus {
-      background-color: $text-input-field-color;
+      // background-color: $text-input-field-color;
     }
   }
 
   .package-form-submit {
     height: 45px;
-    width: 100%;
+    width: 80%;
 
-    font-size: 110%;
+    font-size: 95%;
     font-weight: 400;
-    font-family: $text-font-stack;
+    font-family: sans-serif;;
     letter-spacing: 1px;
     color: white;
-
-    background-color: rgb(39, 219, 138);
+    background-color: $light-gold;
+    // background-color: rgb(39, 219, 138);
     border: 0;
     border-radius: 5px;
   }
 
   .package-form-submit:hover {
-    background-color: $button-hover;
+    background-color: $dark-gold;
   }
 
-  .package-form-submit:active {
-    background-color: $button-press;
-  }
+  // .package-form-submit:active {
+  //   background-color: $button-press;
+  // }
 
   .package-form-submit:disabled {
-    background-color: gray
+    background-color: transparent;
+    border: 1px solid $light-gray;
   }
 
   .package-errors {

@@ -6,7 +6,7 @@
 
   padding: 20px 30px;
   box-sizing: border-box;
-  background-color: rgba(0, 180, 93, 0.4);
+  // background-color: rgba(0, 180, 93, 0.4);
   z-index: 5;
 
   display: flex;
@@ -55,9 +55,9 @@
     color: white;
   }
 
-  button.logo:active {
-    color: $button-press;
-  }
+  // button.logo:active {
+  //   color: $button-press;
+  // }
 
   .menu-btn, .user-btn, .sess-btn {
     display: flex;
@@ -72,9 +72,13 @@
   .sess-btn {
     font-size: 130%;
     font-family: $font-stack;
-    background-color: rgb(46, 119, 70);
-    border-radius: 5px;
+    background-color: transparent;
+    // background-color: rgb(46, 119, 70);
     padding: 10px;
+    color: $dark-gold;
+    border-color: $dark-gold;
+    border: 1px solid $dark-gold;
+    border-radius: 5px;
   }
 
   .user-btn {
@@ -95,20 +99,20 @@
   }
 
   button.sess-btn:hover {
-    background-color: rgb(0, 143, 49);
+    background-color: $dark-gold;
   }
 
-  button.sess-btn:active {
-    background-color: rgb(46, 119, 70);
-  }
+  // button.sess-btn:active {
+  //   background-color: rgb(46, 119, 70);
+  // }
 
   button.menu-btn:hover, button.user-btn:hover, button.sess-btn:hover {
-    color: $button-hover;
+    color: white;
   }
 
-  button.menu-btn:active, button.user-btn:active, button.sess-btn:active {
-    color: $button-press;
-  }
+  // button.menu-btn:active, button.user-btn:active, button.sess-btn:active {
+  //   color: $button-press;
+  // }
 }
 
 .menu-links {
