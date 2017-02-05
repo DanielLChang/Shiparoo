@@ -206,6 +206,10 @@ select, button {
     background-color: $button-press;
   }
 
+  .package-form-submit:disabled {
+    background-color: gray
+  }
+
   .package-errors {
     width: 100%;
     margin-bottom: 40px;
