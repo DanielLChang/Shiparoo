@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600');
 
-$font-stack: 'Lobster', cursive;
+$font-stack: 'Quicksand', cursive;
 $text-font-stack: 'Roboto', sans-serif;
 $text-input-field-color: rgb(191, 251, 255);
 $input-focus-pl-color: rgb(41, 240, 240);
@@ -15,3 +15,8 @@ $dark-blue-half: rgba(164, 235, 255, 0.2);
 $light-blue: rgb(77,188,233);
 $normal-blue: rgb(38,173,228);
 $normal-blue-half: rgba(38,173,228, 0.5);
+
+$light-gray: #d6d7d8;
+$slate-gray: #6d6e70;
+$light-gold: #c49f66;
+$dark-gold: #b98d49;
