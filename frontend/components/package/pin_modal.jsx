@@ -92,7 +92,6 @@ class PinModal extends React.Component {
     return (
       <div id="pin-modal"
         className="modal"
-
         style={{display: 'none'}}>
         <div className="modal-content">
           <div className="modal-header">

@@ -1,6 +1,7 @@
 import React from 'react';
 import merge from 'lodash/merge';
 import PinModal from './pin_modal';
+import PackageShowContainer from './package_show_container';
 
 class Package extends React.Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class Package extends React.Component {
       invalidTracking: false,
       errorVisible: false,
       paramErrors: false,
-      processing: false
+      processing: false,
+      showMapRoute: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,6 +28,7 @@ class Package extends React.Component {
     this.handleValidTracking = this.handleValidTracking.bind(this);
     this.validPhoneNumber = this.validPhoneNumber.bind(this);
     this.createPackage = this.createPackage.bind(this);
+    this.renderMap = this.renderMap.bind(this);
   }
 
   toggleUpdates(field) {
@@ -118,6 +121,16 @@ class Package extends React.Component {
     // Testing modal css
     // document.getElementById('pin-modal').style.display = "block";
 
+    this.setState({ showMapRoute: true});
+
+  }
+
+  renderMap() {
+    if (this.state.showMapRoute === true) {
+      return (<PackageShowContainer carrier={this.state.carrier} trackingNumber={this.state.tracking_number} />);
+    } else {
+      return (<div></div>);
+    }
   }
 
   renderErrors() {
@@ -206,6 +219,7 @@ class Package extends React.Component {
             type="submit">{this.buttonText()}</button>
         </div>
         <PinModal package={this.state.package}/>
+        {this.renderMap()}
       </form>
     );
   }
