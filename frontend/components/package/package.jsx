@@ -6,6 +6,7 @@ class Package extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      package: {},
       tracking_number: "",
       carrier: "ups",
       phone_number: "",
@@ -96,6 +97,7 @@ class Package extends React.Component {
         if (res.package.verified) {
           console.log("render show");
         } else {
+          this.setState({ package: res.package });
           document.getElementById('pin-modal').style.display = "block";
         }
       },
@@ -203,7 +205,7 @@ class Package extends React.Component {
             disabled={this.disableButton()}
             type="submit">{this.buttonText()}</button>
         </div>
-        <PinModal />
+        <PinModal package={this.state.package}/>
       </form>
     );
   }

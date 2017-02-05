@@ -4,11 +4,12 @@ class PinModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pin: ""
+      pinToVerify: ""
     };
 
     this.update = this.update.bind(this);
     this.handleModalSubmit = this.handleModalSubmit.bind(this);
+    this.verifyPin = this.verifyPin.bind(this);
   }
 
   update(field) {
@@ -17,14 +18,30 @@ class PinModal extends React.Component {
     });
   }
 
-  startUpdate() {
-    modal.style.display = "none";
+  verifyPin() {
+    let id = this.props.package.id;
+
+    $.ajax({
+      method: "PATCH",
+      url: `api/packages/${id}`,
+      data: { package: {
+        tracking_number: this.props.package.tracking_number,
+        carrier: this.props.package.carrier,
+        pin: this.state.pinToVerify
+      } },
+      success: () => {
+        this.handleModalClose();
+        console.log("RENDER SHOW");
+      },
+      error: () => {
+        this.setState({ errorVisible: true });
+      }
+    });
   }
 
   handleModalSubmit(e) {
     e.preventDefault();
-    // debugger;
-    this.startUpdate();
+    this.verifyPin();
   }
 
   handleModalClose() {
@@ -50,14 +67,14 @@ class PinModal extends React.Component {
             <input
               className="pin-input"
               type="text"
-              placeholder="Enter PIN to start tracking!"
-              onChange={ this.update("pin")}>
+              placeholder="Enter PIN"
+              onChange={ this.update("pinToVerify")}>
             </input>
 
             <button
               className="modal-submit"
               onClick={ this.handleModalSubmit }>
-              START TRACKING!
+              Submit
             </button>
           </div>
         </div>
