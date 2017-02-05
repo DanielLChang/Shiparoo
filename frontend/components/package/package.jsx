@@ -93,10 +93,14 @@ class Package extends React.Component {
       data: { package: p },
       success: (res) => {
         this.setState({ processing: false });
-        document.getElementById('pin-modal').style.display = "block";
+        if (res.package.verified) {
+          console.log("render show");
+        } else {
+          document.getElementById('pin-modal').style.display = "block";
+        }
       },
       error: () => {
-        this.setState({ paramErrors: true, processing: false });
+        this.setState({ errorVisible: true, paramErrors: true, processing: false });
       }
     });
   }
