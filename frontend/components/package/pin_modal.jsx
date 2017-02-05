@@ -4,7 +4,9 @@ class PinModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pinToVerify: ""
+      pinToVerify: "",
+      errorVisible: false,
+      processing: false
     };
 
     this.update = this.update.bind(this);
@@ -16,6 +18,14 @@ class PinModal extends React.Component {
     return (e) => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  checkPin() {
+    if (this.state.pinToVerify === this.props.package.pin) {
+      this.verifyPin();
+    } else {
+      this.setState({ processing: false, errorVisible: true });
+    }
   }
 
   verifyPin() {
@@ -34,19 +44,38 @@ class PinModal extends React.Component {
         console.log("RENDER SHOW");
       },
       error: () => {
-        this.setState({ errorVisible: true });
+        this.setState({ processing: false, errorVisible: true });
       }
     });
   }
 
   handleModalSubmit(e) {
     e.preventDefault();
-    this.verifyPin();
+    this.setState({ errorVisible: false, processing: true });
+    this.checkPin();
   }
 
   handleModalClose() {
     const modal = document.getElementById("pin-modal");
     modal.style.display = "none";
+  }
+
+  renderErrors() {
+    if (this.state.errorVisible) {
+      return (
+        <div className="package-errors">
+          Invalid PIN
+        </div>
+      );
+    }
+  }
+
+  buttonText() {
+    if (this.state.processing) {
+      return "Processing Request";
+    } else {
+      return "Submit";
+    }
   }
 
   render() {
@@ -71,10 +100,12 @@ class PinModal extends React.Component {
               onChange={ this.update("pinToVerify")}>
             </input>
 
+            {this.renderErrors()}
+
             <button
               className="modal-submit"
               onClick={ this.handleModalSubmit }>
-              Submit
+              { this.buttonText() }
             </button>
           </div>
         </div>
