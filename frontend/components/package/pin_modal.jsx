@@ -78,6 +78,16 @@ class PinModal extends React.Component {
     }
   }
 
+  disableButton() {
+    if (this.state.processing) {
+      return true;
+    } else if (this.state.pinToVerify === "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     return (
       <div id="pin-modal"
@@ -104,6 +114,7 @@ class PinModal extends React.Component {
 
             <button
               className="modal-submit"
+              disabled={this.disableButton()}
               onClick={ this.handleModalSubmit }>
               { this.buttonText() }
             </button>
