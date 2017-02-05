@@ -46,8 +46,12 @@ class Header extends React.Component {
       return (
         <div className="header-user">
           <div className="menu-links">
-            <button className="menu-btn" onClick={this.redirectHome}>Track Package</button>
-            <button className="menu-btn" onClick={this.redirectPackages}>All Packages</button>
+            <button className="menu-btn" onClick={this.redirectHome}>
+              <i className="fa fa-map-marker" aria-hidden="true"></i> Track
+            </button>
+            <button className="menu-btn" onClick={this.redirectPackages}>
+              <i className="fa fa-archive" aria-hidden="true"></i> All
+            </button>
           </div>
           <button className="user-btn" onClick={this.redirectProfile}>
             <img src={profile.picture}></img>

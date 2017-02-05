@@ -143,7 +143,7 @@ select, button {
 
     .tracking-number-input {
       height: 40px;
-      width: 315px;
+      min-width: 315px;
       font-size: 90%;
       padding-left: 10px;
       font-family: $text-font-stack;
@@ -159,7 +159,7 @@ select, button {
     select {
       border: 0;
       height: 40px;
-      width: 125px;
+      min-width: 125px;
       font-size: 80%;
       font-family: $text-font-stack;
       border-radius: 0 5px 5px 0;
