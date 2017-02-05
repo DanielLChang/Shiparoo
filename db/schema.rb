@@ -26,6 +26,6 @@ ActiveRecord::Schema.define(version: 20170201012702) do
     t.integer  "user_id"
     t.string   "carrier"
     t.boolean  "verified",         default: false, null: false
-    t.index ["tracking_number", "phone_number"], name: "index_packages_on_tracking_number_and_phone_number", unique: true, using: :btree
+    t.index ["tracking_number", "phone_number"], name: "index_packages_on_tracking_number_and_phone_number", using: :btree
   end
 end

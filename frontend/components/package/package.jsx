@@ -7,14 +7,17 @@ class Package extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      package: {},
       tracking_number: "",
       carrier: "ups",
       phone_number: "",
       pin: "",
       realtime_updates: false,
       invalidPhone: false,
+      invalidTracking: false,
       errorVisible: false,
-      alreadyTracking: false,
+      paramErrors: false,
+      processing: false,
       showMapRoute: false
     };
 
@@ -50,20 +53,26 @@ class Package extends React.Component {
         if (result.tracking_status !== null) {
           this.handleValidTracking();
         } else {
-          this.setState({ errorVisible: true });
+          this.setState({ processing: false, errorVisible: true, invalidTracking: true });
         }
       },
       error: () => {
-        this.setState({ errorVisible: true });
+        this.setState({ processing: false, errorVisible: true, invalidTracking: true });
       }
     });
   }
 
   handleValidTracking() {
-    if (this.validPhoneNumber(this.state.phone_number)) {
-      this.createPackage();
+    if (this.state.phone_number !== '') {
+      if (this.validPhoneNumber(this.state.phone_number)) {
+        this.setState({ realtime_updates: true });
+        this.createPackage();
+      } else {
+        this.setState({ processing: false, invalidPhone: true });
+      }
     } else {
-      this.setState({ invalidPhone: true });
+      this.setState({ processing: false });
+      console.log("RENDER SHOW");
     }
   }
 
@@ -87,21 +96,31 @@ class Package extends React.Component {
       url: "api/packages",
       data: { package: p },
       success: (res) => {
-        document.getElementById('pin-modal').style.display = "block";
+        this.setState({ processing: false });
+        if (res.package.verified) {
+          console.log("render show");
+        } else {
+          this.setState({ package: res.package });
+          document.getElementById('pin-modal').style.display = "block";
+        }
       },
       error: () => {
-        this.setState({ alreadyTracking: true });
+        this.setState({ errorVisible: true, paramErrors: true, processing: false });
       }
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // Testing modal css
-    document.getElementById('pin-modal').style.display = "block";
+    //processing
+    this.setState({ processing: true });
+    //reset errors
+    this.setState({ errorVisible: false, invalidPhone: false, paramErrors: false, invalidTracking: false });
+    this.startTracking();
 
-    // this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
-    // this.startTracking();
+    // Testing modal css
+    // document.getElementById('pin-modal').style.display = "block";
+
     this.setState({ showMapRoute: true});
 
   }
@@ -118,59 +137,90 @@ class Package extends React.Component {
     if (this.state.errorVisible) {
       return (
         <div className="package-errors">
-          { this.state.errorVisible ? <h4>Invalid tracking information or phone number</h4> : null }
+          { this.state.invalidTracking ? <h4>Invalid tracking number or carrier</h4> : null }
           { this.state.invalidPhone ? <h4>Invalid phone number</h4> : null }
-          { this.state.alreadyTracking ? <h4>Already tracking package!</h4> : null }
+          { this.state.paramErrors ? <h4>Error! Check your parameters</h4> : null }
         </div>
       );
     }
   }
 
+  disableButton() {
+    if (this.state.processing) {
+      return true;
+    } else if (this.state.carrier === "") {
+      return true;
+    } else if (this.state.tracking_number === "") {
+      return true;
+    } else if (this.state.phone_number === "") {
+      return false;
+    } else {
+      return !this.validPhoneNumber(this.state.phone_number);
+    }
+  }
+
+  buttonText() {
+    if (this.state.processing) {
+      return "Processing Request";
+    } else {
+      return this.trackButtonText();
+    }
+  }
+
+  trackButtonText() {
+    if (this.state.phone_number === "") {
+      return "Find Package";
+    } else {
+      return "Receive Updates";
+    }
+  }
+
   render() {
     return(
-      <div className="main-container">
-        <form className="form-container"
-          onSubmit={ this.handleSubmit }>
-          <img className="logo-img"
-            src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png">
-          </img>
-          <h3 className="tagline">Never lose a package again!</h3>
-          <div className="input-container">
-            <div className="tracking-number-container">
-              <input
-                type="text"
-                className="tracking-number-input"
-                placeholder="Tracking Number"
-                onChange={ this.update("tracking_number") }>
-              </input>
+      <form className="form-container"
+            onSubmit={ this.handleSubmit }>
+        <img className="logo-img"
+          src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png">
+        </img>
+        <h3 className="tagline">Never lose a package again!</h3>
+        <div className="input-container">
+          <div className="tracking-number-container">
+            <input
+              type="text"
+              className="tracking-number-input"
+              placeholder="Tracking Number"
+              onChange={ this.update("tracking_number") }>
+            </input>
 
-              <select onChange={ this.update("carrier") }>
-                <option value="ups">UPS</option>
-                <option value="usps">USPS</option>
-                <option value="fedex">FedEX</option>
-                <option value="canada_post">Canada Post</option>
-                <option value="lasership">Lasership</option>
-                <option value="dhl_express">DHL Express</option>
-                <option value="mondial_relay">Mondial Relay</option>
-              </select>
-            </div>
-
-            <div className="phone-number-container">
-              <input
-                className="phone-number-input"
-                type="text"
-                placeholder="Phone Number"
-                onChange={ this.update("phone_number")}>
-              </input>
-            </div>
-            { this.renderErrors() }
-            <button className="package-form-submit"
-              type="submit">GENERATE PIN</button>
+            <select onChange={ this.update("carrier") }>
+              <option value="ups">UPS</option>
+              <option value="usps">USPS</option>
+              <option value="fedex">FedEX</option>
+              <option value="canada_post">Canada Post</option>
+              <option value="lasership">Lasership</option>
+              <option value="dhl_express">DHL Express</option>
+              <option value="mondial_relay">Mondial Relay</option>
+            </select>
           </div>
-          <PinModal />
-        </form>
+
+          <div className="phone-number-container">
+            <input
+              className="phone-number-input"
+              type="text"
+              placeholder="Phone Number (Optional)"
+              onChange={ this.update("phone_number")}>
+            </input>
+          </div>
+
+          { this.renderErrors() }
+
+          <button className="package-form-submit"
+            disabled={this.disableButton()}
+            type="submit">{this.buttonText()}</button>
+        </div>
+        <PinModal package={this.state.package}/>
         {this.renderMap()}
-      </div>
+      </form>
     );
   }
 }

@@ -1,4 +1,5 @@
 class Api::PackagesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   # For testing
   # def new
@@ -29,15 +30,15 @@ class Api::PackagesController < ApplicationController
   end
 
   def create
-    @oackage = Package.find_by(package_params)
+    @package = Package.find_by(package_params)
     if @package
-      render json: { error: "Already tracking package!" }
+      render json: { package: @package }
     else
       @package = Package.new(package_params)
       @package.generate_pin
       @package.send_pin
 
-      render json: { package_id: @package.id }
+      render json: { package: @package }
     end
   end
 
@@ -49,7 +50,7 @@ class Api::PackagesController < ApplicationController
 
       render json: { tracking: shippo_status }
     else
-      render json: { error: "Unable to find package" }
+      render json: { error: "Wrong PIN" }
     end
 
   end
@@ -63,7 +64,8 @@ class Api::PackagesController < ApplicationController
       :realtime_updates,
       :pin,
       :user_id,
-      :carrier
+      :carrier,
+      :verified
     )
   end
 

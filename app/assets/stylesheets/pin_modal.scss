@@ -145,4 +145,8 @@
   .modal-submit:active {
     background-color: $button-press;
   }
+
+  .modal-submit:disabled {
+    background-color: gray;
+  }
 }
