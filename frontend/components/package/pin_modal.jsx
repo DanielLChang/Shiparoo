@@ -52,9 +52,7 @@ class PinModal extends React.Component {
   handleModalSubmit(e) {
     e.preventDefault();
     this.setState({ errorVisible: false, processing: true });
-    setInterval(() => {
-      this.checkPin();
-    }, 1000);
+    this.checkPin();
   }
 
   handleModalClose() {
