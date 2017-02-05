@@ -70,8 +70,12 @@
   }
 
   .sess-btn {
-    font-size: 130%;
-    font-family: $font-stack;
+    font-size: 15px;
+    width: 125px;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1px;
+    font-family: sans-serif;
     background-color: transparent;
     // background-color: rgb(46, 119, 70);
     padding: 10px;

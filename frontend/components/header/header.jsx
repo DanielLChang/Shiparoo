@@ -53,14 +53,14 @@ class Header extends React.Component {
             <img src={profile.picture}></img>
             <h3>{profile.nickname}</h3>
           </button>
-          <button className="sess-btn" onClick={this.logout}>Logout</button>
+          <button className="sess-btn" onClick={this.logout}>LOGOUT</button>
         </div>
       );
     } else {
       return (
         <div className="header-user">
           <div className="menu-links"></div>
-          <button className="sess-btn" onClick={auth.login.bind(this)}>Login</button>
+          <button className="sess-btn" onClick={auth.login.bind(this)}>LOGIN</button>
         </div>
       );
     }
