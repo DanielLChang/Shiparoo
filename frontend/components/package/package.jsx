@@ -12,8 +12,9 @@ class Package extends React.Component {
       pin: "",
       realtime_updates: false,
       invalidPhone: false,
+      invalidTracking: false,
       errorVisible: false,
-      alreadyTracking: false,
+      paramErrors: false,
       processing: false
     };
 
@@ -48,20 +49,26 @@ class Package extends React.Component {
         if (result.tracking_status !== null) {
           this.handleValidTracking();
         } else {
-          this.setState({ errorVisible: true });
+          this.setState({ processing: false, errorVisible: true, invalidTracking: true });
         }
       },
       error: () => {
-        this.setState({ errorVisible: true });
+        this.setState({ processing: false, errorVisible: true, invalidTracking: true });
       }
     });
   }
 
   handleValidTracking() {
-    if (this.validPhoneNumber(this.state.phone_number)) {
-      this.createPackage();
+    if (this.state.phone_number !== '') {
+      if (this.validPhoneNumber(this.state.phone_number)) {
+        this.setState({ realtime_updates: true });
+        this.createPackage();
+      } else {
+        this.setState({ processing: false, invalidPhone: true });
+      }
     } else {
-      this.setState({ invalidPhone: true });
+      this.setState({ processing: false });
+      console.log("RENDER SHOW");
     }
   }
 
@@ -85,30 +92,35 @@ class Package extends React.Component {
       url: "api/packages",
       data: { package: p },
       success: (res) => {
+        this.setState({ processing: false });
         document.getElementById('pin-modal').style.display = "block";
       },
       error: () => {
-        this.setState({ alreadyTracking: true });
+        this.setState({ paramErrors: true, processing: false });
       }
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // Testing modal css
-    document.getElementById('pin-modal').style.display = "block";
+    //processing
+    this.setState({ processing: true });
+    //reset errors
+    this.setState({ errorVisible: false, invalidPhone: false, paramErrors: false, invalidTracking: false });
+    this.startTracking();
 
-    // this.setState({ errorVisible: false, invalidPhone: false, alreadyTracking: false });
-    // this.startTracking();
+    // Testing modal css
+    // document.getElementById('pin-modal').style.display = "block";
+
   }
 
   renderErrors() {
     if (this.state.errorVisible) {
       return (
         <div className="package-errors">
-          { this.state.errorVisible ? <h4>Invalid tracking information or phone number</h4> : null }
+          { this.state.invalidTracking ? <h4>Invalid tracking number or carrier</h4> : null }
           { this.state.invalidPhone ? <h4>Invalid phone number</h4> : null }
-          { this.state.alreadyTracking ? <h4>Already tracking package!</h4> : null }
+          { this.state.paramErrors ? <h4>Error! Check your parameters</h4> : null }
         </div>
       );
     }
@@ -176,11 +188,13 @@ class Package extends React.Component {
             <input
               className="phone-number-input"
               type="text"
-              placeholder="Phone Number"
+              placeholder="Phone Number (Optional)"
               onChange={ this.update("phone_number")}>
             </input>
           </div>
+
           { this.renderErrors() }
+
           <button className="package-form-submit"
             disabled={this.disableButton()}
             type="submit">{this.buttonText()}</button>
