@@ -26,17 +26,10 @@ class PackageShow extends React.Component {
       url: url,
       success: (data) => {
         if (data.tracking_status !== null) {
-          this.setState({details: data});
-          // let locations = [];
-          // for (let a = 0; a < data.tracking_history.length; a++) {
-          //   let reversed = data.tracking_history.reverse();
-          //   locations.push(
-          //     new Date(reversed[a].status_date).toString() + ": " +
-          //       this.getAddress(reversed[a].location) + "\n" +
-          //       reversed[a].status
-          //   );
-          // }
-          this.setState({visited_locations: data.tracking_history});
+          this.setState({
+            details: data,
+            visited_locations: data.tracking_history
+          });
         }
       }
     });
