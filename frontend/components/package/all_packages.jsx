@@ -26,7 +26,7 @@ class AllPackages extends React.Component {
         <div className="all-packages">
           <h2>All Packages</h2>
           { this.props.packages.map((p, idx) =>
-            <h2>{p.tracking_number}</h2>
+            <Link key={idx} to="">{p.tracking_number}</Link>
           )}
         </div>
       </div>
