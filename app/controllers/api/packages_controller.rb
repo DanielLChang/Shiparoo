@@ -63,7 +63,9 @@ class Api::PackagesController < ApplicationController
 
     response = http.start do |http|
       request = Net::HTTP::Post.new(url.path)
-      request["Authorization"] = "ShippoToken shippo_test_8ca225cf58d99ecf339f9e2a9f0dc5bde8eb7dd2"
+      test_key = "shippo_test_8ca225cf58d99ecf339f9e2a9f0dc5bde8eb7dd2"
+      prod_key = "shippo_live_1548aef350c343ba52d02bfe8706d4b291603734"
+      request["Authorization"] = "ShippoToken #{prod_key}"
       request.set_form_data(
         tracking_number: tracking_number,
         carrier: carrier
