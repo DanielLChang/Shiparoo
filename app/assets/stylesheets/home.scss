@@ -89,7 +89,7 @@ select, button {
   padding: 30px;
 
   z-index: 5;
-  margin-top: 5%;
+  margin-top: 30px;
 
   input:focus::-webkit-input-placeholder {
     // color: $input-focus-pl-color;
@@ -118,7 +118,6 @@ select, button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // background-color: rgba(41, 230, 255, 0.3);
     border-radius: 5px;
     padding: 30px;
   }
@@ -142,10 +141,10 @@ select, button {
     flex-direction: row;
 
     .tracking-number-input {
-      height: 40px;
+      height: 50px;
       min-width: 315px;
       font-size: 90%;
-      padding-left: 10px;
+      padding-left: 15px;
       font-family: $text-font-stack;
       border-radius: 5px 0 0 5px;
       border: 0;
@@ -158,7 +157,7 @@ select, button {
 
     select {
       border: 0;
-      height: 40px;
+      height: 50px;
       min-width: 125px;
       font-size: 80%;
       font-family: $text-font-stack;
@@ -176,10 +175,10 @@ select, button {
     flex-direction: column;
 
     .phone-number-input {
-      height: 40px;
-      width: 450px;
+      height: 50px;
+      width: 455px;
       font-size: 90%;
-      padding-left: 10px;
+      padding-left: 15px;
       font-family: $text-font-stack;
       border-radius: 5px;
       border: 0;
@@ -193,8 +192,8 @@ select, button {
   }
 
   .package-form-submit {
-    height: 40px;
-    width: 450px;
+    height: 50px;
+    width: 455px;
 
     font-size: 90%;
     font-weight: 400;
@@ -202,7 +201,6 @@ select, button {
     letter-spacing: 1px;
     color: white;
     background-color: $light-gold;
-    // background-color: rgb(39, 219, 138);
     border: 0;
     border-radius: 5px;
   }
@@ -211,19 +209,15 @@ select, button {
     background-color: $dark-gold;
   }
 
-  // .package-form-submit:active {
-  //   background-color: $button-press;
-  // }
-
   .package-form-submit:disabled {
     background-color: transparent;
     border: 1px solid $light-gray;
   }
 
   .package-errors {
-    width: 450px;
-    height: 40px;
-    margin: 30px;
+    width: 455px;
+    height: 50px;
+    margin: 0 30px 30px 30px;
     border-radius: 5px;
     box-sizing: border-box;
     font-family: sans-serif;
@@ -238,7 +232,7 @@ select, button {
   }
   .pin-errors {
     width: 90%;
-    height: 40px;
+    height: 50px;
     margin-top: 20px;
     border-radius: 5px;
     box-sizing: border-box;

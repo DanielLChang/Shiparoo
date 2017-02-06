@@ -6,7 +6,6 @@
 
   padding: 20px 30px;
   box-sizing: border-box;
-  // background-color: rgba(0, 180, 93, 0.4);
   z-index: 5;
 
   display: flex;
@@ -56,10 +55,6 @@
     color: white;
   }
 
-  // button.logo:active {
-  //   color: $button-press;
-  // }
-
   .menu-btn, .user-btn, .sess-btn {
     display: flex;
     align-items: center;
@@ -68,18 +63,16 @@
     background-color: rgba(0,0,0,0);
     color: white;
     text-decoration: none;
+    font-size: 90%;
   }
 
   .sess-btn {
-    height: 40px;
-    font-size: 15px;
     width: 125px;
     display: flex;
     justify-content: center;
     letter-spacing: 1px;
     font-family: sans-serif;
     background-color: transparent;
-    // background-color: rgb(46, 119, 70);
     padding: 10px;
     color: $dark-gold;
     border-color: $dark-gold;
@@ -93,13 +86,12 @@
 
     h3 {
       font-weight: 300;
-      font-size: 15px;
+      font-size: 100%;
       letter-spacing: 1px;
     }
   }
 
   .menu-btn {
-    font-size: 15px;
     font-weight: 300;
     font-family: $text-font-stack;
     margin-left: 25px;
@@ -108,10 +100,10 @@
     text-align: center;
     justify-content: center;
     border: 1px solid transparent;
-    padding-bottom: 5px;
+    padding: 5px 0;
+
     .fa {
       margin-right: 6px;
-      // padding-bottom: 2px;
     }
   }
 
@@ -123,23 +115,14 @@
     background-color: $dark-gold;
   }
 
-  // button.sess-btn:active {
-  //   background-color: rgb(46, 119, 70);
-  // }
-
   button.menu-btn:hover, button.user-btn:hover, button.sess-btn:hover {
     color: white;
   }
-
-  // button.menu-btn:active, button.user-btn:active, button.sess-btn:active {
-  //   color: $button-press;
-  // }
 }
 
 .menu-links {
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-end; */
   flex: 1;
   margin-left: 10px;
 }
