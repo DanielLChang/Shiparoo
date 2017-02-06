@@ -15,7 +15,7 @@ Enter in a phone number and receive text updates for your package until it is de
 
 ![home](./docs/images/home.png)
 
-![text](./docs/images/text.png)
+![text](./docs/images/text.PNG)
 
 ### PIN Verification
 
