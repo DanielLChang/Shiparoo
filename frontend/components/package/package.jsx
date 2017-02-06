@@ -84,12 +84,23 @@ class Package extends React.Component {
   }
 
   createPackage() {
-    const p = {
-      tracking_number: this.state.tracking_number,
-      phone_number: this.state.phone_number,
-			realtime_updates: this.state.realtime_updates,
-      carrier: this.state.carrier
-    };
+    let p;
+    if (localStorage.getItem("profile")) {
+      p = {
+        tracking_number: this.state.tracking_number,
+        phone_number: this.state.phone_number,
+        realtime_updates: this.state.realtime_updates,
+        carrier: this.state.carrier,
+        user_id: JSON.parse(localStorage.getItem('profile')).clientID
+      };
+    } else {
+      p = {
+        tracking_number: this.state.tracking_number,
+        phone_number: this.state.phone_number,
+        realtime_updates: this.state.realtime_updates,
+        carrier: this.state.carrier
+      };
+    }
 
     $.ajax({
       method: "POST",
