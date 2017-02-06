@@ -13,6 +13,9 @@ Shiparoo and Shiparoo-iOS are personal projects by Calvin Yau, Daniel Chang, and
 ![home][home]
 [home]: ./docs/images/home.png
 
+![text][text]
+[text]: ./docs/images/text.png
+
 #### Enter in a tracking number and see tracking history
 ![details][details]
 [details]: ./docs/images/package_details.png
@@ -21,12 +24,11 @@ Shiparoo and Shiparoo-iOS are personal projects by Calvin Yau, Daniel Chang, and
 ![map][map]
 [map]: ./docs/images/map.png
 
-
 #### Receive a PIN when signing up for text updates for verification
 ![pin_modal][pin_modal]
 [pin_modal]: ./docs/images/pin_modal.png
 
-#### Can log in as a user to save tracked packages
+#### Can log in as a user
 ![logged_in][logged_in]
 [logged_in]: ./docs/images/home_logged_in.png
 
@@ -56,8 +58,7 @@ The project is built on Ruby on Rails with PostgreSQL.
 - Google Maps API
   - Visualize package shipping routes
 
+## Original Design
 
-
-
-
+Our initial ideas and wireframe designs can be found here.
 [Docs] (./docs)
