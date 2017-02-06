@@ -91,13 +91,9 @@ select, button {
   z-index: 5;
   margin-top: 30px;
 
-  input:focus::-webkit-input-placeholder {
-    // color: $input-focus-pl-color;
-  }
-
   .logo-img {
     margin-bottom: 30px;
-    height: 200px;
+    height: 250px;
   }
 
   .tagline {
@@ -105,13 +101,6 @@ select, button {
     font-family: $font-stack;
     color: white;
     font-size: 140%;
-  }
-
-  @media(max-height: 800px) {
-    .logo-img {
-      width: 100px;
-      height: 100px;
-    }
   }
 
   .input-container{
