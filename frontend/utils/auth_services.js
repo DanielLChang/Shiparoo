@@ -12,7 +12,7 @@ export default class AuthService extends EventEmitter {
 
     this.lock = new Auth0Lock('HQyc8BbQc47Drpa85hJca6t6THDNOAXg', 'justinsuen.auth0.com', {
       auth: {
-        redirectUrl: devUrl,
+        redirectUrl: prodUrl,
         responseType: 'token'
       },
     });
