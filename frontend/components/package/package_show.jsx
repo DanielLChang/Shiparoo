@@ -27,16 +27,16 @@ class PackageShow extends React.Component {
       success: (data) => {
         if (data.tracking_status !== null) {
           this.setState({details: data});
-          let locations = [];
-          for (let a = 0; a < data.tracking_history.length; a++) {
-            let reversed = data.tracking_history.reverse();
-            locations.push(
-              new Date(reversed[a].status_date).toString() + ": " +
-                this.getAddress(reversed[a].location) + "\n" +
-                reversed[a].status
-            );
-          }
-          this.setState({visited_locations: locations});
+          // let locations = [];
+          // for (let a = 0; a < data.tracking_history.length; a++) {
+          //   let reversed = data.tracking_history.reverse();
+          //   locations.push(
+          //     new Date(reversed[a].status_date).toString() + ": " +
+          //       this.getAddress(reversed[a].location) + "\n" +
+          //       reversed[a].status
+          //   );
+          // }
+          this.setState({visited_locations: data.tracking_history});
         }
       }
     });
@@ -58,6 +58,7 @@ class PackageShow extends React.Component {
   }
 
   showDetails() {
+    // debugger;
     let fromAddress = "", toAddress = "", status = "", status_details = "";
     let status_date_with_location = "", curr_location = "";
     if (this.state.details.tracking_status) {
@@ -78,7 +79,7 @@ class PackageShow extends React.Component {
           <h6>To: {toAddress}</h6>
           <div className="tracking-list">
             <ul>
-
+              {this.showTrackingHistory()}
             </ul>
           </div>
         </div>
@@ -89,7 +90,27 @@ class PackageShow extends React.Component {
   }
 
   showTrackingHistory() {
+    let history = this.state.visited_locations.reverse().map((location) => {
+      let status = location.status;
+      let status_details = location.status_details;
+      let status_date = new Date(location.status_date).toString();
+      let status_location = this.getAddress(location.location)
 
+      return (
+        <li key={location.object_id}>
+          <span>{status}</span>
+          <br/>
+          <span>{status_date}</span>
+          <br/>
+          <span>{status_location}</span>
+          <br/>
+          <span>{status_details}</span>
+          <br/>
+        </li>
+      );
+    });
+
+    return history;
   }
 
   render() {
