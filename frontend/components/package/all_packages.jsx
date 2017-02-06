@@ -21,12 +21,23 @@ class AllPackages extends React.Component {
 
   render() {
     return (
-      <div className="all-packages-container">
+      <div className="home-container">
         <Header auth={this.props.auth}/>
         <div className="all-packages">
-          <h2>All Packages</h2>
+          <h2 className="ap-title">All Packages</h2>
+          <div className="ap-header">
+            <div className="pli-id">#</div>
+            <div className="pli-carr">Carrier</div>
+            <div className="pli-track">Tracking Number</div>
+          </div>
           { this.props.packages.map((p, idx) =>
-            <Link key={idx} to="">{p.tracking_number}</Link>
+            <Link key={idx}
+              to={`${p.carrier}/${p.tracking_number}`}
+              className="package-list-item">
+              <div className="pli-id">{idx + 1}</div>
+              <div className="pli-carr">{p.carrier}</div>
+              <div className="pli-track">{p.tracking_number}</div>
+            </Link>
           )}
         </div>
       </div>
