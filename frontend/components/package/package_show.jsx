@@ -113,7 +113,7 @@ class PackageShow extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="all-package-container">
         <Header auth={this.props.auth}/>
         <div className="package-show">
           {this.showDetails()}
