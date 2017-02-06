@@ -91,7 +91,7 @@ class Package extends React.Component {
         phone_number: this.state.phone_number,
         realtime_updates: this.state.realtime_updates,
         carrier: this.state.carrier,
-        user_id: JSON.parse(localStorage.getItem('profile')).clientID
+        user_id: JSON.parse(localStorage.getItem('profile')).user_id
       };
     } else {
       p = {

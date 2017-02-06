@@ -6,6 +6,7 @@ import AuthService from '../utils/auth_services';
 
 import App from './app';
 import HomeContainer from './home/home_container';
+import AllPackagesContainer from './package/all_packages_container';
 // import Profile from './profile/profile';
 import NotFound from './not_found';
 
@@ -30,6 +31,7 @@ class Root extends Component {
           <Route path="/" component={App} auth={this.auth}>
             <IndexRoute component={HomeContainer}/>
             <Route path="home" component={HomeContainer}/>
+            <Route path="packages" component={AllPackagesContainer}/>
             <Route path="*" component={NotFound}/>
           </Route>
         </Router>
