@@ -42,7 +42,7 @@ class Header extends React.Component {
     const { auth } = this.props;
     const { profile } = this.state;
 
-    if (auth.loggedIn()) {
+    if (profile) {
       return (
         <div className="header-user">
           <div className="menu-links">

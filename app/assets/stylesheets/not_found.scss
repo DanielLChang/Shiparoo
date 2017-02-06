@@ -23,7 +23,7 @@
   text-align: center;
 
   h1 {
-    font-family: $text-font-stack;
+    font-family: 'Quicksand', cursive;
     font-size: 300%;
     font-weight: 500;
     letter-spacing: 1px;
@@ -32,8 +32,8 @@
   }
 
   h2 {
-    font-family: $text-font-stack;
-    font-size: 25px;
+    font-family: 'Quicksand', cursive;
+    font-size: 130%;
     font-weight: 400;
     letter-spacing: 1px;
     color: $dark-gold;
@@ -58,7 +58,7 @@
 
   button.rdr-home {
     h2 {
-      font-family: sans-serif;;
+      font-family: 'Quicksand', cursive;
       margin-top: 25px;
       margin-bottom: 0;
       color: white;
@@ -66,16 +66,4 @@
 
     font-size: 100%;
   }
-
-  // .rdr-home:hover {
-  //   h2 {
-  //     color: $dark-gold;
-  //   }
-  // }
-
-  // .rdr-home:active {
-  //   h2{
-  //     color: $button-press;
-  //   }
-  // }
 }
