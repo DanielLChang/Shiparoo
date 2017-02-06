@@ -78,8 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: shiparoo_production
-  username: shiparoo
-  password: <%= ENV['SHIPAROO_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: shiparoo_production
+#   username: shiparoo
+#   password: <%= ENV['SHIPAROO_DATABASE_PASSWORD'] %>
