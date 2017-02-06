@@ -53,4 +53,14 @@
     background-color: $light-gold;
     color: white;
   }
+
+  h2.no-package {
+    width: 70%;
+    text-align: center;
+    font-family: $font-stack;
+    font-size: 200%;
+    color: white;
+    padding: 40px 20px;
+    border: 1px solid $light-gold;
+  }
 }

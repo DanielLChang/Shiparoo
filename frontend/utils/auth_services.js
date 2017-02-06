@@ -7,12 +7,12 @@ export default class AuthService extends EventEmitter {
   constructor() {
     super();
 
-    const devUrl = 'http://localhost:3000';
+    const devUrl = 'http://localhost:3000/home';
     const prodUrl = 'http://shiparoo.herokuapp.com';
 
     this.lock = new Auth0Lock('HQyc8BbQc47Drpa85hJca6t6THDNOAXg', 'justinsuen.auth0.com', {
       auth: {
-        redirectUrl: prodUrl,
+        redirectUrl: devUrl,
         responseType: 'token'
       },
     });

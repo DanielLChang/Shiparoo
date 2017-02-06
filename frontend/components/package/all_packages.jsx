@@ -19,6 +19,25 @@ class AllPackages extends React.Component {
     browserHistory.push("/home");
   }
 
+  checkPackages() {
+    if (this.props.packages.length > 0) {
+      return (
+        this.props.packages.map((p, idx) =>
+        <Link key={idx}
+          to={`${p.carrier}/${p.tracking_number}`}
+          className="package-list-item">
+          <div className="pli-id">{idx + 1}</div>
+          <div className="pli-carr">{p.carrier}</div>
+          <div className="pli-track">{p.tracking_number}</div>
+        </Link>
+      ));
+    } else {
+      return (
+        <h2 className="no-package">You have no packages tracked!</h2>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="home-container">
@@ -30,15 +49,7 @@ class AllPackages extends React.Component {
             <div className="pli-carr">Carrier</div>
             <div className="pli-track">Tracking Number</div>
           </div>
-          { this.props.packages.map((p, idx) =>
-            <Link key={idx}
-              to={`${p.carrier}/${p.tracking_number}`}
-              className="package-list-item">
-              <div className="pli-id">{idx + 1}</div>
-              <div className="pli-carr">{p.carrier}</div>
-              <div className="pli-track">{p.tracking_number}</div>
-            </Link>
-          )}
+          { this.checkPackages() }
         </div>
       </div>
     );
