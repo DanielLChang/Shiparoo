@@ -14,7 +14,7 @@ Shiparoo and Shiparoo-iOS are personal projects by Calvin Yau, Daniel Chang, and
 [home]: ./docs/images/home.png
 
 ![text][text]
-[text]: ./docs/images/text.png
+[text]: ./docs/images/text.PNG
 
 #### Enter in a tracking number and see tracking history
 ![details][details]
