@@ -2,6 +2,7 @@ import React from 'react';
 import merge from 'lodash/merge';
 import PinModal from './pin_modal';
 import PackageShowContainer from './package_show_container';
+import { browserHistory } from 'react-router';
 
 class Package extends React.Component {
   constructor(props) {
@@ -72,7 +73,8 @@ class Package extends React.Component {
       }
     } else {
       this.setState({ processing: false });
-      console.log("RENDER SHOW");
+      // console.log("RENDER SHOW");
+      browserHistory.push(`${this.state.carrier}/${this.state.tracking_number}`);
     }
   }
 
@@ -109,7 +111,8 @@ class Package extends React.Component {
       success: (res) => {
         this.setState({ processing: false });
         if (res.package.verified) {
-          console.log("render show");
+          // console.log("render show");
+          browserHistory.push(`${this.state.carrier}/${this.state.tracking_number}`);
         } else {
           this.setState({ package: res.package });
           document.getElementById('pin-modal').style.display = "block";
@@ -231,7 +234,7 @@ class Package extends React.Component {
         </div>
         <PinModal package={this.state.package}/>
 
-        {this.renderMap()}
+        {/*this.renderMap()*/}
 
       </form>
     );
