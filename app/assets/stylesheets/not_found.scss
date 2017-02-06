@@ -11,7 +11,7 @@
 
 .not-found {
   width: 70%;
-  height: 100%;
+  height: 85%;
   padding: 50px;
   box-sizing: border-box;
 
@@ -33,10 +33,10 @@
 
   h2 {
     font-family: $text-font-stack;
-    font-size: 250%;
+    font-size: 25px;
     font-weight: 400;
     letter-spacing: 1px;
-    color: rgb(130, 224, 255);
+    color: $dark-gold;
     margin-bottom: 30px;
   }
 
@@ -46,33 +46,36 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-
-    padding: 40px;
-    background-color: rgba(154, 246, 255, 0.4);
-    border-radius: 30px;
     border: 0;
+    padding: 25px;
+    background-color: $light-gold;
+    border-radius: 5px;
+  }
+
+  .rdr-home:hover {
+    background-color: $dark-gold;
   }
 
   button.rdr-home {
     h2 {
-      font-family: $font-stack;
+      font-family: sans-serif;;
       margin-top: 25px;
       margin-bottom: 0;
+      color: $slate-gray;
     }
 
     font-size: 100%;
   }
 
-  .rdr-home:hover {
-    h2 {
-      color: $button-hover;
-    }
-    background-color: rgba(154, 246, 255, 0.6);
-  }
+  // .rdr-home:hover {
+  //   h2 {
+  //     color: $dark-gold;
+  //   }
+  // }
 
-  .rdr-home:active {
-    h2{
-      color: $button-press;
-    }
-  }
+  // .rdr-home:active {
+  //   h2{
+  //     color: $button-press;
+  //   }
+  // }
 }

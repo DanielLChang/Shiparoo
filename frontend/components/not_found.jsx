@@ -22,7 +22,7 @@ class NotFound extends React.Component {
           <h1>Did you try to look for your package?</h1>
           <h2>It's not here &#128550;</h2>
           <button className="rdr-home" onClick={this.redirectHome}>
-            <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068145/logo_white_uem0ko.png"></img>
+            <img src="https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486331920/logo_gold_b2fxcm.png"></img>
             <h2>Let us do it for you!</h2>
           </button>
         </div>
