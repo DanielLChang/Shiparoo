@@ -22,7 +22,7 @@ class PackageShow extends React.Component {
 
   componentDidMount() {
     const url = `https://api.goshippo.com/v1/tracks/${this.state.carrier}/${this.state.tracking_number}`;
-    debugger;
+
     $.ajax({
       method: "GET",
       url: url,
@@ -53,7 +53,6 @@ class PackageShow extends React.Component {
   }
 
   showDetails() {
-    // debugger;
     let fromAddress = "", toAddress = "", status = "", status_details = "";
     let status_date_with_location = "", curr_location = "";
     if (this.state.details.tracking_status) {
@@ -67,6 +66,9 @@ class PackageShow extends React.Component {
 
       return (
         <div className="details">
+          <h1>{carriers[this.state.carrier]}</h1>
+          <h2>Tracking Number: {this.state.tracking_number}</h2>
+          <br/>
           <h2>{status}</h2>
           <h4>{status_date_with_location}</h4>
           <h4>{status_details}</h4>
@@ -122,5 +124,15 @@ class PackageShow extends React.Component {
     );
   }
 }
+
+const carriers = {
+  'ups': 'UPS',
+  'usps': 'USPS',
+  'fedex': 'FedEX',
+  'canada_post': 'Canada Post',
+  'lasership': 'Lasership',
+  'dhl_express': 'DHL Express',
+  'mondial_relay': 'Mondial Relay'
+};
 
 export default PackageShow;
