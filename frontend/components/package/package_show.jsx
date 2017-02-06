@@ -8,8 +8,10 @@ class PackageShow extends React.Component {
     super(props);
     this.state = {
       package: this.props.package,
+      // carrier: this.props.carrier,
+      // tracking_number: this.props.trackingNumber,
       carrier: this.props.carrier,
-      tracking_number: this.props.trackingNumber,
+      tracking_number: this.props.tracking_number,
       details: {},
       visited_locations: []
     }
@@ -20,7 +22,7 @@ class PackageShow extends React.Component {
 
   componentDidMount() {
     const url = `https://api.goshippo.com/v1/tracks/${this.state.carrier}/${this.state.tracking_number}`;
-
+    debugger;
     $.ajax({
       method: "GET",
       url: url,
