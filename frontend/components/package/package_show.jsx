@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import PackageMap from './package_map';
+import Header from '../header/header';
 
 class PackageShow extends React.Component {
   constructor(props) {
@@ -66,14 +67,14 @@ class PackageShow extends React.Component {
 
       return (
         <div className="details">
-          <h1>{carriers[this.state.carrier]}</h1>
+          <h1 className="carrier">{carriers[this.state.carrier]}</h1>
           <h2>Tracking Number: {this.state.tracking_number}</h2>
           <br/>
-          <h2>{status}</h2>
+          <h2 className="status">{status}</h2>
           <h4>{status_date_with_location}</h4>
           <h4>{status_details}</h4>
-          <h6>From: {fromAddress}</h6>
-          <h6>To: {toAddress}</h6>
+          <h5>FROM: {fromAddress}</h5>
+          <h5>TO: {toAddress}</h5>
           <div className="tracking-list">
             <ul>
               {this.showTrackingHistory()}
@@ -95,11 +96,11 @@ class PackageShow extends React.Component {
 
       return (
         <li key={location.object_id}>
-          <span>{status}</span>
+          <span className="status">{status}</span>
           <br/>
-          <span>{status_date}</span>
+          <span className="gray-span">{status_date}</span>
           <br/>
-          <span>{status_location}</span>
+          <span className="gray-span">{status_location}</span>
           <br/>
           <span>{status_details}</span>
           <br/>
@@ -112,14 +113,17 @@ class PackageShow extends React.Component {
 
   render() {
     return (
-      <div className="package-show">
-        {this.showDetails()}
-        <PackageMap
-          getPackage={this.props.getPackage}
-          package={this.props.package}
-          carrier={this.props.carrier}
-          trackingNumber={this.props.tracking_number}
-          />
+      <div>
+        <Header auth={this.props.auth}/>
+        <div className="package-show">
+          {this.showDetails()}
+          <PackageMap
+            getPackage={this.props.getPackage}
+            package={this.props.package}
+            carrier={this.props.carrier}
+            trackingNumber={this.props.tracking_number}
+            />
+        </div>
       </div>
     );
   }
