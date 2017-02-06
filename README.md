@@ -62,3 +62,7 @@ The project is built on Ruby on Rails with PostgreSQL.
 
 Our initial ideas and wireframe designs can be found here.
 [Docs] (./docs)
+
+## Future Implementations
+- Auto detect carrier on tracking number input
+- Email updates
