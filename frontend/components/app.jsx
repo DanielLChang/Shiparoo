@@ -18,7 +18,7 @@ class App extends React.Component {
 
     return (
       <div className="app-container">
-        { this.props.route.auth.loggedIn() ? <ProfileModal /> : null }
+        { localStorage.getItem("profile") ? <ProfileModal profile={JSON.parse(localStorage.getItem("profile"))}/> : null }
         { children }
       </div>
     );

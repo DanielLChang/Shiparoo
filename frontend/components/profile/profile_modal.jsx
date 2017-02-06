@@ -6,14 +6,10 @@ import Header from '../header/header';
 class ProfileModal extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      profile: JSON.parse(localStorage.getItem("profile"))
-    };
   }
 
   pictureCheck() {
-    const { profile } = this.state;
+    const profile = this.props.profile;
 
     if (profile.identities[0].provider === "facebook") {
       return (<img src={profile.picture_large}></img>);
@@ -23,7 +19,7 @@ class ProfileModal extends React.Component {
   }
 
   getCreateDate() {
-    const date = this.state.profile.created_at.split("");
+    const date = this.props.profile.created_at.split("");
     const year = date.slice(0, 4).join("");
     const month = date.slice(5, 7).join("");
     const day = date.slice(8, 10).join("");
@@ -36,7 +32,7 @@ class ProfileModal extends React.Component {
   }
 
   render() {
-    const { profile } = this.state;
+    const profile = this.props.profile;
 
     return (
       <div id="profile-modal"
