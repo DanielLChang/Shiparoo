@@ -49,8 +49,6 @@ class ProfileModal extends React.Component {
           { this.pictureCheck() }
           <div className="profile-text">
             <p><strong>Name:</strong> {profile.name}</p>
-            <p><strong>Email:</strong> {profile.email ? profile.email : "No email provided"}</p>
-            <p><strong>Nickname:</strong> {profile.nickname}</p>
             <p><strong>Member since:</strong> {this.getCreateDate()}</p>
           </div>
         </div>

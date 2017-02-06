@@ -2,7 +2,7 @@
 
 .header {
   width: 100vw;
-  height: 80px;
+  height: 100px;
 
   padding: 20px 30px;
   box-sizing: border-box;
@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     flex: 1;
 
     img {
@@ -70,6 +71,7 @@
   }
 
   .sess-btn {
+    height: 40px;
     font-size: 15px;
     width: 125px;
     display: flex;
@@ -83,23 +85,38 @@
     border-color: $dark-gold;
     border: 1px solid $dark-gold;
     border-radius: 5px;
+    margin-left: 30px;
   }
 
   .user-btn {
-    margin-right: 30px;
     font-family: $text-font-stack;
 
     h3 {
       font-weight: 300;
-      font-size: 200%;
+      font-size: 15px;
+      letter-spacing: 1px;
     }
   }
 
   .menu-btn {
-    font-size: 110%;
+    font-size: 15px;
     font-weight: 300;
     font-family: $text-font-stack;
-    margin-left: 20px;
+    margin-left: 25px;
+    letter-spacing: 1px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    padding-bottom: 5px;
+    .fa {
+      margin-right: 6px;
+      // padding-bottom: 2px;
+    }
+  }
+
+  .menu-btn:hover {
+    border-bottom: 1px solid $light-gold;
   }
 
   button.sess-btn:hover {
@@ -122,7 +139,7 @@
 .menu-links {
   display: flex;
   flex-direction: row;
+  /* justify-content: flex-end; */
   flex: 1;
-
   margin-left: 10px;
 }

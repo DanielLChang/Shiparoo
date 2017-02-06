@@ -27,7 +27,7 @@
 
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  background-color: #3C89AF;
+  background-color: $cloud;
 
   .pm-header {
     display: flex;
@@ -57,7 +57,7 @@
 
   p {
     margin: 0 0 30px 0;
-    font-family: $text-font-stack;
+    font-family: sans-serif;;
     color: white;
     font-size: 120%;
     font-weight: 300;
