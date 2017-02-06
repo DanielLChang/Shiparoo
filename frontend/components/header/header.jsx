@@ -6,7 +6,7 @@ class Header extends React.Component {
     super(props);
     this.state = {
       loggedIn: this.props.auth.loggedIn(),
-      profile: ""
+      profile: JSON.parse(localStorage.getItem("profile"))
     };
 
     props.auth.on('profile_updated', (newProfile) => {

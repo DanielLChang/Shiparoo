@@ -8,7 +8,7 @@ class ProfileModal extends React.Component {
     super(props);
 
     this.state = {
-      profile: ""
+      profile: JSON.parse(localStorage.getItem("profile"))
     };
 
     props.auth.on('profile_updated', (newProfile) => {

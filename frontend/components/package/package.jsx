@@ -223,11 +223,11 @@ class Package extends React.Component {
             </input>
           </div>
 
+          { this.renderErrors() }
 
           <button className="package-form-submit"
             disabled={this.disableButton()}
             type="submit">{this.buttonText()}</button>
-          { this.renderErrors() }
         </div>
         <PinModal package={this.state.package}/>
 
