@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170206024032) do
     t.string   "user_id"
     t.string   "carrier"
     t.boolean  "verified",         default: false, null: false
-    t.index ["tracking_number", "phone_number"], name: "index_packages_on_tracking_number_and_phone_number", using: :btree
+    t.index ["tracking_number", "phone_number"], name: "index_packages_on_tracking_number_and_phone_number", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
