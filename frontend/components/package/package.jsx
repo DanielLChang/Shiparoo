@@ -93,7 +93,7 @@ class Package extends React.Component {
         phone_number: this.state.phone_number,
         realtime_updates: this.state.realtime_updates,
         carrier: this.state.carrier,
-        user_id: JSON.parse(localStorage.getItem('profile')).clientID
+        user_id: JSON.parse(localStorage.getItem('profile')).user_id
       };
     } else {
       p = {
@@ -226,11 +226,11 @@ class Package extends React.Component {
             </input>
           </div>
 
+          { this.renderErrors() }
 
           <button className="package-form-submit"
             disabled={this.disableButton()}
             type="submit">{this.buttonText()}</button>
-          { this.renderErrors() }
         </div>
         <PinModal package={this.state.package}/>
 
