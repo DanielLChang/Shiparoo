@@ -1,5 +1,8 @@
 import React from 'react';
 
+import PackageShowContainer from './package_show_container';
+import { browserHistory } from 'react-router';
+
 class PinModal extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +44,8 @@ class PinModal extends React.Component {
       } },
       success: () => {
         this.handleModalClose();
-        console.log("RENDER SHOW");
+        // console.log("RENDER SHOW");
+        browserHistory.push(`${this.props.package.carrier}/${this.props.package.tracking_number}`);
       },
       error: () => {
         this.setState({ processing: false, errorVisible: true });

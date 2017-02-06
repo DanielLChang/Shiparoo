@@ -6,8 +6,10 @@ import PackageShow from './package_show';
 const mapStateToProps = (state, ownProps) => {
   return {
     package: state.package,
-    carrier: ownProps.carrier,
-    tracking_number: ownProps.trackingNumber
+    // carrier: ownProps.carrier,
+    // tracking_number: ownProps.trackingNumber
+    carrier: ownProps.params.carrier,
+    tracking_number: ownProps.params.trackingNumber
   };
 };
 

@@ -9,6 +9,7 @@ import HomeContainer from './home/home_container';
 import AllPackagesContainer from './package/all_packages_container';
 // import Profile from './profile/profile';
 import NotFound from './not_found';
+import PackageShowContainer from './package/package_show_container';
 
 class Root extends Component {
   constructor() {
@@ -32,6 +33,7 @@ class Root extends Component {
             <IndexRoute component={HomeContainer}/>
             <Route path="home" component={HomeContainer}/>
             <Route path="packages" component={AllPackagesContainer}/>
+            <Route path=":carrier/:trackingNumber" component={PackageShowContainer} />
             <Route path="*" component={NotFound}/>
           </Route>
         </Router>
