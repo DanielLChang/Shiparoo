@@ -32,8 +32,8 @@ class Root extends Component {
           <Route path="/" component={App} auth={this.auth}>
             <IndexRoute component={HomeContainer}/>
             <Route path="home" component={HomeContainer}/>
-            <Route path="packages" component={AllPackagesContainer}/>
-            <Route path=":carrier/:trackingNumber" component={PackageShowContainer} />
+            <Route path="packages" component={AllPackagesContainer} onEnter={this._ensureLoggedIn}/>
+            <Route path=":carrier/:trackingNumber" component={PackageShowContainer}/>
             <Route path="*" component={NotFound}/>
           </Route>
         </Router>
