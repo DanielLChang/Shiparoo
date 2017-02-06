@@ -1,4 +1,4 @@
-#Shiparoo
+# Shiparoo
 
 It's always tough waiting for a package. It's even tougher not knowing when it will arrive. With Shiparoo, users can find out where their package is at all times. By inputting a phone number along with their tracking number, users can easily receive realtime updates on the status of their packages from delivery to arrival. Never lose track of another package again!
 
@@ -9,39 +9,45 @@ Shiparoo and Shiparoo-iOS are personal projects by Calvin Yau, Daniel Chang, and
 
 ## Features
 
-#### Enter in a phone number and receive text updates for your package until it is delivered
-![home][home]
-[home]: ./docs/images/home.png
+### SMS Package Tracking
 
-![text][text]
-[text]: ./docs/images/text.PNG
+Enter in a phone number and receive text updates for your package until it is delivered. Twilio sends updates through SMS while Shippo retrieves package information.
 
-#### Enter in a tracking number and see tracking history
-![details][details]
-[details]: ./docs/images/package_details.png
+![home](./docs/images/home.png)
 
-#### View tracking history on a Google Map
-![map][map]
-[map]: ./docs/images/map.png
+![text](./docs/images/text.png)
 
-#### Receive a PIN when signing up for text updates for verification
+### PIN Verification
+
+Receive a PIN for verification when tracking a package for text updates.
+
 ![pin_modal][pin_modal]
 [pin_modal]: ./docs/images/pin_modal.png
 
-#### Can log in as a user
-![logged_in][logged_in]
-[logged_in]: ./docs/images/home_logged_in.png
+### Map and History View
 
-![user][user]
-[user]: ./docs/images/user_modal.png
+Enter in a tracking number and see tracking history. In addition, view tracking history on a Google Map. A path is drawn on Google Maps API based on tracking location and history.
+
+![details][details]
+[details]: ./docs/images/package_details.png
+
+### User Authentication
+
+Package tracking information is saved for users who signed up. Users can view all their package tracking history. Authentication is provided by Auth0, which uses OmniAuth.
 
 ## Architecture & Technology
 
 ### Backend
-The project is built on Ruby on Rails with PostgreSQL.
+- Ruby on Rails
+- PostgreSQL
+- Shippo API calls
+  - Status updates through API calls
 
 ### Frontend
 - React with Redux
+  - Use react-router and browserHistory for clean URLs
+  - Single-page application experience
+  - Not found page is handled by react-router as well
 
 - Shippo API
   - Request data passed to Shippo API by POSTing JSON objects with the appropriate key/value-pairs to the corresponding resource.
@@ -54,6 +60,8 @@ The project is built on Ruby on Rails with PostgreSQL.
 
 - Auth0
   - Allows signing up with Facebook or Google accounts, or personal emails
+  - Utilizes localStorage for session handling
+  - Allows users to have Gravatars or images from Facebook and Google accounts for personalization
 
 - Google Maps API
   - Visualize package shipping routes
@@ -65,4 +73,5 @@ Our initial ideas and wireframe designs can be found here.
 
 ## Future Implementations
 - Auto detect carrier on tracking number input
+- User profile editing
 - Email updates

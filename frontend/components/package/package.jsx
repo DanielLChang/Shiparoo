@@ -73,7 +73,6 @@ class Package extends React.Component {
       }
     } else {
       this.setState({ processing: false });
-      // console.log("RENDER SHOW");
       browserHistory.push(`${this.state.carrier}/${this.state.tracking_number}`);
     }
   }
@@ -111,7 +110,6 @@ class Package extends React.Component {
       success: (res) => {
         this.setState({ processing: false });
         if (res.package.verified) {
-          // console.log("render show");
           browserHistory.push(`${this.state.carrier}/${this.state.tracking_number}`);
         } else {
           this.setState({ package: res.package });
@@ -233,9 +231,6 @@ class Package extends React.Component {
             type="submit">{this.buttonText()}</button>
         </div>
         <PinModal package={this.state.package}/>
-
-        {/*this.renderMap()*/}
-
       </form>
     );
   }
