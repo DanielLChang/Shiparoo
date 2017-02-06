@@ -9,17 +9,29 @@ Shiparoo and Shiparoo-iOS are personal projects by Calvin Yau, Daniel Chang, and
 
 ## Features
 
+#### Enter in a phone number and receive text updates for your package until it is delivered
+![home][home]
+[home]: ./docs/images/home.png
+
 #### Enter in a tracking number and see tracking history
-
-
+![details][details]
+[details]: ./docs/images/package_details.png
 
 #### View tracking history on a Google Map
+![map][map]
+[map]: ./docs/images/map.png
 
-#### Enter in a phone number and receive text updates for your package until it is delivered
 
 #### Receive a PIN when signing up for text updates for verification
+![pin_modal][pin_modal]
+[pin_modal]: ./docs/images/pin_modal.png
 
 #### Can log in as a user to save tracked packages
+![logged_in][logged_in]
+[logged_in]: ./docs/images/home_logged_in.png
+
+![user][user]
+[user]: ./docs/images/user_modal.png
 
 ## Architecture & Technology
 
