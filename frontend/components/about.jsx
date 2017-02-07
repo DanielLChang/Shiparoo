@@ -1,11 +1,9 @@
 import React from 'react';
 import { withRouter, Link, browserHistory } from 'react-router';
 
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import Package from '../package/package';
+import Header from './header/header';
 
-class Home extends React.Component {
+class About extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,11 +12,10 @@ class Home extends React.Component {
     return (
       <div className="home-container">
         <Header auth={this.props.auth}/>
-        <Package />
-        <Footer />
+        <h1>Things</h1>
       </div>
     );
   }
 }
 
-export default withRouter(Home);
+export default withRouter(About);
