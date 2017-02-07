@@ -124,10 +124,6 @@
     color: $slate-gray;
   }
 
-  // .pin-input:focus {
-  //   background-color: $text-input-field-color;
-  // }
-
   .modal-submit {
     font-size: 95%;
     font-weight: 400;
@@ -141,10 +137,6 @@
   .modal-submit:hover {
     background-color: $dark-gold;
   }
-
-  // .modal-submit:active {
-  //   background-color: $button-press;
-  // }
 
   .modal-submit:disabled {
     background-color: transparent;

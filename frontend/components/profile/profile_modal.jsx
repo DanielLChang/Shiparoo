@@ -6,28 +6,20 @@ import Header from '../header/header';
 class ProfileModal extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      profile: JSON.parse(localStorage.getItem("profile"))
-    };
-
-    props.auth.on('profile_updated', (newProfile) => {
-      this.setState({profile: newProfile});
-    });
   }
 
   pictureCheck() {
-    const profile = this.state.profile;
+    const profile = this.props.profile;
 
     if (profile.identities[0].provider === "facebook") {
-      return (<img src={profile.picture_large}></img>);
+      return (<img className="pm-img" src={profile.picture_large}></img>);
     } else {
-      return (<img src={profile.picture}></img>);
+      return (<img className="pm-img" src={profile.picture}></img>);
     }
   }
 
   getCreateDate() {
-    const date = this.state.profile.created_at.split("");
+    const date = this.props.profile.created_at.split("");
     const year = date.slice(0, 4).join("");
     const month = date.slice(5, 7).join("");
     const day = date.slice(8, 10).join("");
@@ -40,7 +32,7 @@ class ProfileModal extends React.Component {
   }
 
   render() {
-    const profile = this.state.profile;
+    const profile = this.props.profile;
 
     if (profile) {
       return (

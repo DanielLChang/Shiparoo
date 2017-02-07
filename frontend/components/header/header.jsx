@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, browserHistory } from 'react-router';
 
 import { demoProfile } from "./demo_profile";
+import ProfileModal from '../profile/profile_modal';
 
 class Header extends React.Component {
   constructor(props) {
@@ -57,6 +58,7 @@ class Header extends React.Component {
     if (profile) {
       return (
         <div className="header-user">
+          <ProfileModal profile={profile}/>
           <div className="menu-links">
             <button className="menu-btn" onClick={this.redirectHome}>
               <i className="fa fa-map-marker" aria-hidden="true"></i> Track
