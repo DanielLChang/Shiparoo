@@ -20,7 +20,7 @@ class Root extends Component {
   }
 
   _ensureLoggedIn(nextState, replace) {
-    if (!this.auth.loggedIn()) {
+    if (!this.auth.loggedIn() && !localStorage.getItem("profile")) {
       replace('/home');
     }
   }

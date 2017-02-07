@@ -11,9 +11,16 @@ export default class AuthService extends EventEmitter {
     const prodUrl = 'http://www.shiparoo.us';
 
     this.lock = new Auth0Lock('HQyc8BbQc47Drpa85hJca6t6THDNOAXg', 'justinsuen.auth0.com', {
+      theme: {
+        logo: "https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068146/logo_black_tegzxf.png",
+      },
       auth: {
         redirectUrl: prodUrl,
         responseType: 'token'
+      },
+      languageDictionary: {
+        emailInputPlaceholder: "demo@shiparoo.com",
+        title: "Shiparoo"
       },
     });
 

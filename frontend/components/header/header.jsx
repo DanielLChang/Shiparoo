@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, browserHistory } from 'react-router';
 
+import { demoProfile } from "./demo_profile";
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,17 @@ class Header extends React.Component {
     this.redirectProfile = this.redirectProfile.bind(this);
     this.redirectPackages = this.redirectPackages.bind(this);
     this.logout = this.logout.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
+    this.props.auth.login = this.props.auth.login.bind(this);
+  }
+
+  demoLogin() {
+    console.log(demoProfile);
+    localStorage.setItem("profile", demoProfile);
+    this.setState({
+      loggedIn: true,
+      profile: JSON.parse(localStorage.getItem("profile"))
+    });
   }
 
   logout() {
@@ -64,7 +77,8 @@ class Header extends React.Component {
       return (
         <div className="header-user">
           <div className="menu-links"></div>
-          <button className="sess-btn" onClick={auth.login.bind(this)}>LOGIN</button>
+          <button className="sess-btn" onClick={this.demoLogin}>DEMO</button>
+          <button className="sess-btn" onClick={auth.login}>LOGIN</button>
         </div>
       );
     }
