@@ -4,8 +4,8 @@ It's always tough waiting for a package. It's even tougher not knowing when it w
 
 [Live][live]
 [live]:[http://shiparoo.herokuapp.com]
-Shiparoo is the web version of [Shiparoo-iOS][shiparoo-ios]
-[shiparoo-ios]:[https://github.com/justinsuen/shiparoo-ios].
+Shiparoo is the web version of [Shiparoo-iOS][shiparoo-ios].
+[shiparoo-ios]:[https://github.com/justinsuen/shiparoo-ios]
 
 Shiparoo and Shiparoo-iOS are personal projects by Calvin Yau, Daniel Chang, and Justin Suen.
 
