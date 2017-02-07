@@ -78,7 +78,7 @@ class PackageMap extends React.Component {
     let keys = Object.keys(location);
     for (let index in keys) {
       address_str += location[keys[index]];
-      if (keys[index] === "city") address_str += ",";
+      if (keys[index] === "city" && location[keys[index]] !== "") address_str += ",";
       if (keys[index] !== "country" && location[keys[index]] !== "") address_str += " ";
     }
     return address_str;
