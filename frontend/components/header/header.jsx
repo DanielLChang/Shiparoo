@@ -24,7 +24,6 @@ class Header extends React.Component {
   }
 
   demoLogin() {
-    console.log(demoProfile);
     localStorage.setItem("profile", demoProfile);
     this.setState({
       loggedIn: true,
