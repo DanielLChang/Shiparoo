@@ -15,7 +15,7 @@ export default class AuthService extends EventEmitter {
         logo: "https://res.cloudinary.com/dxfu1kzhk/image/upload/v1486068146/logo_black_tegzxf.png",
       },
       auth: {
-        redirectUrl: devUrl,
+        redirectUrl: prodUrl,
         responseType: 'token'
       },
       languageDictionary: {
