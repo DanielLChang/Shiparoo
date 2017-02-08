@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter, browserHistory } from 'react-router';
 
 import Header from '../header/header';
+import Footer from '../footer/footer';
 
 class AllPackages extends React.Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class AllPackages extends React.Component {
           </div>
           { this.checkPackages() }
         </div>
+        <Footer />
       </div>
     );
   }

@@ -97,3 +97,32 @@
     object-position: 0 -15px;
   }
 }
+
+.gh-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  h3.about-tag {
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    margin-left: 20px;
+    font-family: $font-stack;
+    text-decoration: none;
+    font-size: 150%;
+    color: $light-gold;
+  }
+
+  a:visited {
+    color: $light-gold;
+  }
+
+  a:hover {
+    color: white;
+  }
+}

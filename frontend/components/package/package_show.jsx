@@ -9,13 +9,11 @@ class PackageShow extends React.Component {
     super(props);
     this.state = {
       package: this.props.package,
-      // carrier: this.props.carrier,
-      // tracking_number: this.props.trackingNumber,
       carrier: this.props.carrier,
       tracking_number: this.props.tracking_number,
       details: {},
       visited_locations: []
-    }
+    };
 
     this.showDetails = this.showDetails.bind(this);
     this.showTrackingHistory = this.showTrackingHistory.bind(this);
@@ -92,7 +90,7 @@ class PackageShow extends React.Component {
       let status = location.status;
       let status_details = location.status_details;
       let status_date = new Date(location.status_date).toString();
-      let status_location = this.getAddress(location.location)
+      let status_location = this.getAddress(location.location);
 
       return (
         <li key={location.object_id}>

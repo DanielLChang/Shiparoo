@@ -16,6 +16,11 @@ class About extends React.Component {
           <h1>About Shiparoo</h1>
           <h3 className="about-tag">Shiparoo is an elegant, web and mobile
             application for realtime package tracking.</h3>
+          <div className="gh-links">
+            <h3 className="about-tag">Check us out on GitHub!</h3>
+            <a href="https://github.com/DanielLChang/Shiparoo">Web</a>
+            <a href="https://github.com/justinsuen/shiparoo-ios">Mobile</a>
+          </div>
           <h4>Engineering Team</h4>
           <div className="about-create-container">
             <div className="creator-item">
@@ -44,7 +49,7 @@ class About extends React.Component {
               <h3 className="about-des">Justin Suen</h3>
               <div className="creator-links">
                 <a href="https://github.com/justinsuen"><i className="fa fa-github"></i></a>
-                <a href="https://linkedin.com/in/justin-suen"><i className="fa fa-linkedin-square"></i></a>
+                  <a href="https://github.com/justinsuen"><i className="fa fa-github"></i></a>                <a href="https://linkedin.com/in/justin-suen"><i className="fa fa-linkedin-square"></i></a>
                 <a href="mailto:jsuen27@gmail.com"><i className="fa fa-envelope"></i></a>
               </div>
             </div>
