@@ -58,7 +58,7 @@ class PackageMap extends React.Component {
          return element !== undefined;
       });
       this.drawMarkers();
-      this.map.setCenter(this.routeCoordinates[this.routeCoordinates.length - 1]);
+      // this.map.setCenter(this.routeCoordinates[this.routeCoordinates.length - 1]);
     });
   }
 
@@ -78,7 +78,7 @@ class PackageMap extends React.Component {
     let keys = Object.keys(location);
     for (let index in keys) {
       address_str += location[keys[index]];
-      if (keys[index] === "city") address_str += ",";
+      if (keys[index] === "city" && location[keys[index]] !== "") address_str += ",";
       if (keys[index] !== "country" && location[keys[index]] !== "") address_str += " ";
     }
     return address_str;
@@ -95,6 +95,7 @@ class PackageMap extends React.Component {
     route.setMap(this.map);
 
     let marker;
+    let bounds = new google.maps.LatLngBounds();
     for (let a = 0; a < this.routeCoordinates.length; a++) {
       let position = this.routeCoordinates[a];
       marker = new google.maps.Marker({
@@ -103,7 +104,11 @@ class PackageMap extends React.Component {
         draggable: false,
         animation: google.maps.Animation.DROP
       });
+      bounds.extend(marker.getPosition());
     }
+    this.map.fitBounds(bounds);
+    // this.map.setCenter(bounds.getCenter());
+    // this.map.setZoom(this.map.getZoom()-1);
   }
 
   render() {
