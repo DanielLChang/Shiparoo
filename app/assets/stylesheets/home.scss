@@ -257,7 +257,12 @@ select, button {
   align-items: center;
   justify-content: center;
 
+  i {
+    margin-right: 10px;
+  }
+
   a {
+    margin-left: 20px;
     font-family: $font-stack;
     text-decoration: none;
     font-size: 130%;

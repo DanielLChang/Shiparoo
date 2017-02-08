@@ -1,0 +1,99 @@
+@import "variables"
+;
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 70vw;
+  padding: 30px;
+
+  h1, h3, h4, p {
+    text-align: center;
+  }
+
+  h1 {
+    width: auto;
+    font-family: $font-stack;
+    font-size: 300%;
+    color: $light-gold;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid $light-gold;
+  }
+
+  h4 {
+    font-family: $font-stack;
+    font-size: 200%;
+    color: white;
+    padding: 30px 0 10px 0;
+    margin: 0;
+  }
+
+  h3.about-des, h3.about-tag {
+    font-family: $text-font-stack;
+    line-height: 140%;
+    font-size: 150%;
+    font-weight: 300;
+  }
+
+  h3.about-tag {
+    margin-bottom: 20px;
+    color: $light-gray;
+  }
+
+  h3.about-des {
+    margin: 15px 0 10px 0;
+    color: white;
+  }
+}
+
+.about-create-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  padding: 20px 40px;
+
+  .creator-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 30px 20px;
+
+    p {
+      font-family: $text-font-stack;
+      font-size: 120%;
+      font-weight: 300;
+      color: white;
+      margin: 15px 0;
+    }
+
+    a {
+      margin: 10px;
+      color: $light-gray;
+    }
+
+    a:visited {
+      color: $light-gray;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    i {
+      font-size: 200%;
+    }
+  }
+
+  img.creator-img{
+    width: 230px;
+    height: 230px;
+    border-radius: 230px;
+    object-fit: cover;
+    object-position: 0 -15px;
+  }
+}

@@ -9,7 +9,8 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <Link to="about">About</Link>
+        <Link to="about"><i className="fa fa-info-circle"></i>About</Link>
+        <a href="https://github.com/DanielLChang/Shiparoo"><i className="fa fa-github"></i>GitHub</a>
       </div>
     );
   }
