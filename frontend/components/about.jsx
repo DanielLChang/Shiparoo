@@ -49,7 +49,7 @@ class About extends React.Component {
               <h3 className="about-des">Justin Suen</h3>
               <div className="creator-links">
                 <a href="https://github.com/justinsuen"><i className="fa fa-github"></i></a>
-                  <a href="https://github.com/justinsuen"><i className="fa fa-github"></i></a>                <a href="https://linkedin.com/in/justin-suen"><i className="fa fa-linkedin-square"></i></a>
+                <a href="https://linkedin.com/in/justin-suen"><i className="fa fa-linkedin-square"></i></a>
                 <a href="mailto:jsuen27@gmail.com"><i className="fa fa-envelope"></i></a>
               </div>
             </div>
