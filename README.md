@@ -3,7 +3,7 @@
 It's always tough waiting for a package. It's even tougher not knowing when it will arrive. With Shiparoo, users can find out where their package is at all times. By inputting a phone number along with their tracking number, users can easily receive realtime updates on the status of their packages from delivery to arrival. Never lose track of another package again!
 
 [Live][live]
-[live]:http://shiparoo.herokuapp.com
+[live]:http://www.shiparoo.us
 Shiparoo is the web version of [Shiparoo-iOS][shiparoo-ios].
 [shiparoo-ios]:https://github.com/justinsuen/shiparoo-ios
 
@@ -38,6 +38,11 @@ Enter in a tracking number and see tracking history. In addition, view tracking 
 Package tracking information is saved for users who signed up. Users can view all their package tracking history. Authentication is provided by Auth0, which uses OmniAuth.
 
 ## Architecture & Technology
+
+### Deployment
+- Amazon Web Services - Elastic Beanstalk
+- Webpack for frontend JavaScript and React
+- PostgreSQL through Amazon RDS services
 
 ### Backend
 - Ruby on Rails
